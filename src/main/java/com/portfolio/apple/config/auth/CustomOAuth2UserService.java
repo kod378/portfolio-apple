@@ -1,7 +1,7 @@
 package com.portfolio.apple.config.auth;
 
-import com.portfolio.apple.domain.UserAccount;
-import com.portfolio.apple.repository.UserRepository;
+import com.portfolio.apple.domain.account.user.UserAccount;
+import com.portfolio.apple.domain.account.user.UserAccountRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,7 +21,7 @@ import java.util.Collections;
 @Slf4j
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
-    private final UserRepository userRepository;
+    private final UserAccountRepository userRepository;
     private final HttpSession httpSession;
 
     @Override

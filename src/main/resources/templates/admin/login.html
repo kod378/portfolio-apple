@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/adminFragments.html::head"></head>
+<body class="bg-light">
+
+<header th:replace="admin/adminFragments.html::header"></header>
+
+<style>
+    .formDIV {
+        height: 80vh;
+    }
+</style>
+<main>
+
+    <section class="container" th:if="${message}" >
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <span th:text="${message}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="formDIV d-flex justify-content-center align-items-center">
+            <div class="border border-primary border-3 p-5">
+                <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                    <p>아이디 또는 비밀번호가 정확하지 않습니다.</p>
+                </div>
+
+                <form th:action="@{/admin/login}" method="post">
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">아이디</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" name="accountId" placeholder="아이디">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">비밀번호</label>
+                        <input type="password" class="form-control" id="formGroupExampleInput2" name="password" placeholder="비밀번호">
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary" type="submit">로그인</button>
+                        <a href="" th:href="@{/admin/join}">
+                            <button class="btn btn-primary" type="button">회원가입으로</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 package com.portfolio.apple.config.auth;
 
-import com.portfolio.apple.domain.Role;
-import com.portfolio.apple.domain.UserAccount;
+import com.portfolio.apple.domain.account.Role;
+import com.portfolio.apple.domain.account.user.UserAccount;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -19,15 +19,14 @@ public class OAuthAttributes {
     public static OAuthAttributes of(String registrationId,
                                      String userNameAttributeName,
                                      Map<String, Object> attributes) {
-        System.out.println("registrationId = " + registrationId);
-        System.out.println("userNameAttributeName = " + userNameAttributeName);
-        System.out.println(attributes);
         if("naver".equals(registrationId)) {
             return ofNaver("id", attributes);
         }
 
-        return ofGoogle(userNameAttributeName, attributes);
+//        return ofGoogle(userNameAttributeName, attributes);   // 구글 로그인 안함
+        return ofNaver("id", attributes);
     }
+
 
     private static OAuthAttributes ofNaver(String userNameAttributeName,
                                            Map<String, Object> attributes) {
@@ -56,7 +55,7 @@ public class OAuthAttributes {
         return UserAccount.builder()
                 .name(name)
                 .email(email)
-                .role(Role.GUEST)
+                .role(Role.USER)
                 .build();
     }
 }

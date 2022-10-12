@@ -1,6 +1,6 @@
 package com.portfolio.apple.config.auth;
 
-import com.portfolio.apple.domain.UserAccount;
+import com.portfolio.apple.domain.account.user.UserAccount;
 import lombok.Getter;
 
 import java.io.Serializable;

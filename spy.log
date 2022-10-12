@@ -1,0 +1,370 @@
+1665105067541|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665105067542|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665105067542|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665105067542|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665105067542|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665105067545|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665105067545|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665105067545|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665105067545|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665105067546|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665106004535|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665106004535|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665106004536|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665106004536|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665106004536|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665106004536|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665106004536|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665106004536|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665106004536|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665106004537|0|statement|connection 16|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665303370884|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665303370884|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665303370884|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665303370885|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665303370885|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665303370885|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665303370885|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665303370885|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665303370886|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665303370886|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665303404762|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665303404763|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665303404763|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665303404763|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665303404763|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665303404763|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665303404763|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665303404764|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665303404764|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665303404764|0|statement|connection 41|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665390783133|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665390783133|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665390783133|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665390783133|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665390783133|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665390783133|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665390783134|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665390783134|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665390783134|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665390783136|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665391054819|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665391054819|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665391054819|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665391054819|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665391054819|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665391054820|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665391054820|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665391054820|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665391054820|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665391054820|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665391148955|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665391148956|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665391148956|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665391148956|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665391148956|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665391148956|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665391148956|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665391148956|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665391148957|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665391148957|0|statement|connection 55|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665391215071|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665391215072|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665391215072|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665391215072|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665391215072|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665391215072|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665391215072|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665391215073|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665391215073|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665391215073|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665391277628|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665391277629|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665391277629|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665391277629|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665391277629|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665391277629|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665391277629|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665391277629|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665391277629|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665391277630|0|statement|connection 56|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665477597210|0|statement|connection 270|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665477597210|0|statement|connection 270|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665477597210|0|statement|connection 270|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665477597210|0|statement|connection 270|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665477597210|0|statement|connection 270|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665477597210|0|statement|connection 270|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665477597211|0|statement|connection 270|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665477597211|0|statement|connection 270|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665477597213|0|statement|connection 270|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665477597213|0|statement|connection 270|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665479305002|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665479305003|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665479305003|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665479305003|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665479305003|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665479305003|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665479305003|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665479305003|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665479305003|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665479305004|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665479305009|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665479305009|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665479305009|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665479305009|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665479305010|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665479305010|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665479305010|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665479305010|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665479305010|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665479305010|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665479524795|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665479524795|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665479524796|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665479524796|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665479524796|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665479524796|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665479524796|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665479524796|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665479524796|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665479524796|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665479524801|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665479524802|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665479524802|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665479524802|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665479524802|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665479524802|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665479524802|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665479524802|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665479524802|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665479524803|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665479595402|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665479595403|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665479595403|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665479595403|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665479595403|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665479595403|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665479595403|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665479595403|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665479595403|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665479595404|0|statement|connection 273|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665479595408|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665479595408|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665479595409|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665479595409|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665479595409|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665479595409|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665479595409|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665479595409|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665479595409|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665479595409|0|statement|connection 274|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665481131541|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665481131541|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665481131541|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665481131542|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665481131542|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665481131542|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665481131542|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665481131542|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665481131542|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665481131542|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665481131547|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665481131547|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665481131547|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665481131547|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665481131547|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665481131547|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665481131548|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665481131548|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665481131548|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665481131548|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665504296705|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665504296705|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665504296705|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665504296705|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665504296706|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665504296706|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665504296706|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665504296706|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665504296706|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665504296706|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665504296711|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665504296711|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665504296711|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665504296712|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665504296712|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665504296712|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665504296712|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665504296712|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665504296712|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665504296712|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665504401711|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665504401712|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665504401712|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665504401712|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665504401712|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665504401712|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665504401712|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665504401712|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665504401713|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665504401713|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665504401719|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665504401719|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665504401719|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665504401719|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665504401719|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665504401720|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665504401720|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665504401720|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665504401720|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665504401720|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665504425080|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665504425080|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665504425080|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665504425080|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665504425080|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665504425080|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665504425080|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665504425080|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665504425081|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665504425081|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665504425086|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665504425086|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665504425086|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665504425086|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665504425087|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665504425087|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665504425087|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665504425087|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665504425087|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665504425087|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665504640634|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665504640635|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665504640635|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665504640635|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665504640635|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665504640635|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665504640635|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665504640635|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665504640635|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665504640635|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665504640640|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665504640641|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665504640641|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665504640641|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665504640641|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665504640641|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665504640641|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665504640641|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665504640641|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665504640642|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665507083314|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665507083314|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665507083314|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665507083314|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665507083315|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665507083315|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665507083315|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665507083315|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665507083315|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665507083315|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665507083320|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665507083320|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665507083320|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665507083320|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665507083320|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665507083320|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665507083320|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665507083320|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665507083320|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665507083321|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665507363428|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665507363428|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665507363428|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665507363428|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665507363428|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665507363428|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665507363429|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665507363429|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665507363429|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665507363429|0|statement|connection 294|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665507363433|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665507363433|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665507363434|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665507363434|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665507363434|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665507363434|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665507363434|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665507363434|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665507363434|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665507363434|0|statement|connection 295|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665560219715|0|statement|connection 105|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665560219715|0|statement|connection 105|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665560219716|0|statement|connection 105|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665560219716|0|statement|connection 105|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665560219716|0|statement|connection 105|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665560219716|0|statement|connection 105|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665560219716|0|statement|connection 105|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665560219717|0|statement|connection 105|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665560219717|0|statement|connection 105|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665560219717|0|statement|connection 105|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665560228564|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665560228564|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665560228564|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665560228565|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665560228565|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665560228565|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665560228565|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665560228566|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665560228566|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665560228566|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665560228576|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665560228576|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665560228577|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665560228577|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665560228577|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665560228577|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665560228577|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665560228578|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665560228578|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665560228578|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665560341101|0|statement|connection 195|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665560341103|1|statement|connection 195|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665560341103|0|statement|connection 195|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665560341103|0|statement|connection 195|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665560341103|0|statement|connection 195|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665560341104|0|statement|connection 195|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665560341104|0|statement|connection 195|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665560341104|0|statement|connection 195|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665560341104|0|statement|connection 195|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665560341104|0|statement|connection 195|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665560341113|0|statement|connection 196|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665560341113|0|statement|connection 196|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665560341114|0|statement|connection 196|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665560341114|0|statement|connection 196|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665560341114|0|statement|connection 196|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665560341114|0|statement|connection 196|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665560341114|0|statement|connection 196|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665560341114|0|statement|connection 196|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665560341114|0|statement|connection 196|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665560341115|0|statement|connection 196|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665560379848|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665560379848|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665560379849|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665560379849|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665560379849|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665560379849|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665560379849|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665560379849|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665560379849|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665560379850|0|statement|connection 199|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
+1665560379857|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists admin_account CASCADE |     drop table if exists admin_account CASCADE 
+1665560379857|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists category CASCADE |     drop table if exists category CASCADE 
+1665560379858|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists delivery CASCADE |     drop table if exists delivery CASCADE 
+1665560379858|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists item CASCADE |     drop table if exists item CASCADE 
+1665560379858|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists ordered_item CASCADE |     drop table if exists ordered_item CASCADE 
+1665560379858|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists orders CASCADE |     drop table if exists orders CASCADE 
+1665560379858|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists review CASCADE |     drop table if exists review CASCADE 
+1665560379858|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists shopping_item CASCADE |     drop table if exists shopping_item CASCADE 
+1665560379858|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop table if exists user_account CASCADE |     drop table if exists user_account CASCADE 
+1665560379859|0|statement|connection 200|url jdbc:h2:tcp://localhost/~/apple|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence

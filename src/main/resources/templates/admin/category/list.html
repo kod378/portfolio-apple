@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/adminFragments.html::head"></head>
+<body class="bg-light">
+
+<header th:replace="admin/adminFragments.html::header"></header>
+
+<main>
+
+    <section class="container" th:if="${message}" >
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <span th:text="${message}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </section>
+
+    <section class="container">
+        <!--    카테고리 등록 폼-->
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="border border-primary border-3 p-5">
+                <form class="needs-validation" novalidate
+                      th:action="@{/admin/category}" th:object="${categorySaveRequestDTO}" method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">카테고리 이름</label>
+                        <input type="text" class="form-control" id="name" th:field="*{name}"
+                               placeholder="카테고리 이름" required>
+                        <div class="invalid-feedback">
+                            카테고리 이름을 등록해주세요
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary" type="submit">카테고리 등록</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
+
+<!--        수정가능한 카테고리 리스트-->
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="border border-primary border-3 p-5">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">카테고리 번호</th>
+                        <th scope="col">카테고리 이름</th>
+                        <th scope="col">카테고리 등록일</th>
+                        <th scope="col">카테고리 수정일</th>
+                        <th scope="col">카테고리 수정</th>
+                        <th scope="col">카테고리 삭제</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="category : ${categoryList}">
+                        <th scope="row" th:text="${category.id}"></th>
+                        <td>
+                            <input type="hidden" name="_method" value="put">
+                            <input type="text" class="form-control" name="name" th:id="${category.name}"
+                                   th:value="${category.name}" required>
+                            <div class="invalid-feedback">
+                                카테고리 이름을 등록해주세요
+                            </div>
+                        </td>
+                        <td th:text="${category.createdDateTime}"></td>
+                        <td th:text="${category.lastModifiedDateTime}"></td>
+                        <td>
+                            <button class="btn btn-primary" type="button"
+                                    th:onclick="categoryJS.update([(${category.id})],[(${category.name})])">수정</button>
+                        <td>
+                            <button class="btn btn-danger" type="button"
+                                    th:onclick="categoryJS.delete([(${category.id})])">삭제</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+<script>
+    var categoryJS = {
+        init: function () {
+            var _this = this;
+        },
+        update: function (categoryId, inputIdOfName) {
+            console.log(categoryId);
+            console.log(inputIdOfName.value);
+            let data = {
+                // id: categoryId,
+                name: inputIdOfName.value
+            };
+
+            fetch('/api/category/' + categoryId, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                body: JSON.stringify(data)
+            }).then(function (response) {
+                if(response.status === 200){
+                    alert('카테고리 수정이 완료되었습니다.');
+                    location.reload();
+                }else{
+                    alert('시스템에 오류가 발생했습니다. 새로고침 후 다시 시도해주세요.');
+                }
+            });
+        },
+        delete: function (categoryId) {
+
+            if(confirm('정말 삭제하시겠습니까?')) {
+                fetch('/api/category/' + categoryId, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
+                    }
+                }).then(function (response) {
+                    if(response.status === 200){
+                        alert('카테고리 삭제가 완료되었습니다.');
+                        location.reload();
+                    }else{
+                        alert('시스템에 오류가 발생했습니다. 새로고침 후 다시 시도해주세요.');
+                    }
+                });
+            }
+        }
+    };
+    categoryJS.init();
+</script>
+</body>
+</html>
