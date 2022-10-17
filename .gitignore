@@ -41,4 +41,6 @@ out/
 /src/main/resources/templates/study/
 
 application-oauth.yml
-
+/src/main/generated/
+spy.log
+.gitignore
