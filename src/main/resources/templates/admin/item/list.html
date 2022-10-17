@@ -7,67 +7,88 @@
 
 <main>
 
-  <section class="container" th:if="${message}" >
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <span th:text="${message}"></span>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  </section>
+    <div th:replace="admin/adminFragments.html::message"></div>
 
-  <section class="container">
-    <div class="row">
-      <div class="col-3">
-        <!-- 카테고리 목록 나열 -->
-        <div class="list-group">
-          <a href="/admin/item/list" class="list-group-item list-group-item-action active">카테고리1</a>
-          <a href="/admin/item/list?category=1" class="list-group-item list-group-item-action">카테고리2</a>
-          <a href="/admin/item/list?category=2" class="list-group-item list-group-item-action">카테고리3</a>
-        </div>
-      <div class="col-9">
-        <!-- 상품 목록 나열 -->
+    <section class="container">
         <div class="row">
-          <div class="col-12">
-            <div class="d-flex justify-content-between">
-              <h3>상품 목록</h3>
-              <a href="/admin/item/add" class="btn btn-primary">상품 등록</a>
+            <div class="col-3">
+                <div th:replace="admin/adminFragments.html::categoryDtoList"></div>
             </div>
-          </div>
+            <div class="col-9">
+                <!-- 상품 목록 나열 -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <h3>상품 목록</h3>
+                            <a href="/admin/item/save" class="btn btn-primary">상품 등록</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>대표이미지</th>
+                                <th>상품번호</th>
+                                <th>상품명</th>
+                                <th>가격</th>
+                                <th>재고</th>
+                                <th>카테고리</th>
+                                <th>판매여부</th>
+                                <th>수정</th>
+                                <th>삭제</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="item : ${itemDtoList}">
+                                <td>
+                                    <img th:src="${'/uploadImage/s_' + item.itemFileDtoList[0].fileName}" width="100" height="100">
+                                </td>
+                                <td th:text="${item.id}"></td>
+                                <td th:text="${item.name}"></td>
+                                <td th:text="${item.price}"></td>
+                                <td th:text="${item.stockQuantity}"></td>
+                                <td th:text="${item.categoryName}"></td>
+                                <td th:if="${item.active == true}">판매중</td>
+                                <td th:if="${item.active == false}">판매중지</td>
+                                <td><a th:href="@{/admin/item/update/{id}(id=${item.id})}" class="btn btn-primary">수정</a></td>
+                                <td><button th:onclick="itemJS.delete([(${item.id})])" class="btn btn-danger">삭제</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-          <div class="col-12">
-            <table class="table table-hover">
-              <thead>
-              <tr>
-                <th>상품번호</th>
-                <th>상품명</th>
-                <th>가격</th>
-                <th>카테고리</th>
-                <th>판매여부</th>
-                <th>수정</th>
-                <th>삭제</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr th:each="item : ${items}">
-                <td th:text="${item.id}"></td>
-                <td th:text="${item.name}"></td>
-                <td th:text="${item.price}"></td>
-                <td th:text="${item.category.name}"></td>
-                <td th:text="${item.active}"></td>
-                <td><a href="/admin/item/edit?id=${item.id}" class="btn btn-primary">수정</a></td>
-                <td><a href="/admin/item/delete?id=${item.id}" class="btn btn-danger">삭제</a></td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
+    </section>
 </main>
 
+<script>
+    var itemJS = {
+        init: function () {
+            var _this = this;
+        },
+        delete: function (itemId) {
+
+            if(confirm('정말 삭제하시겠습니까?')) {
+                fetch('/api/item/' + itemId, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
+                    }
+                }).then(function (response) {
+                    if(response.status === 200){
+                        alert('아이템 삭제가 완료되었습니다.');
+                        location.reload();
+                    }else{
+                        alert('시스템에 오류가 발생했습니다. 새로고침 후 다시 시도해주세요.');
+                    }
+                });
+            }
+        }
+    };
+    itemJS.init();
+</script>
 </body>
 </html>

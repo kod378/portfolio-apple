@@ -14,10 +14,28 @@ spring:
     properties:
       hibernate:
         format_sql: true
-#        show_sql: true
+        #show_sql: true
+        default_batch_fetch_size: 100 # 컬렉션 패치 최적화
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 30MB
+      max-request-size: 50MB
+      location: /images/
+
+file:
+  upload-image-dir: "E:/upload"
+  upload-thumbnail-dir: "E:/upload/thumbnail"
+
 
 logging:
   level:
     root: debug
     org.hibernate.sql: debug
 
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true

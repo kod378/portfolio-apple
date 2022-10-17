@@ -1,14 +1,13 @@
-package com.portfolio.apple.domain.item.mapper;
+package com.portfolio.apple.mapper;
 
 import com.portfolio.apple.domain.category.Category;
 import com.portfolio.apple.domain.category.CategoryRepository;
-import com.portfolio.apple.domain.item.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class ItemReferenceMapper {
+public class CategoryReferenceMapper {
 
     private final CategoryRepository categoryRepository;
 

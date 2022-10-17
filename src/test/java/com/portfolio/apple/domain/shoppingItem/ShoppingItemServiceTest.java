@@ -1,25 +1,32 @@
 package com.portfolio.apple.domain.shoppingItem;
 
+import com.portfolio.apple.ResetTextExecutionListener;
 import com.portfolio.apple.domain.account.Role;
 import com.portfolio.apple.domain.account.user.UserAccount;
 import com.portfolio.apple.domain.category.Category;
 import com.portfolio.apple.domain.category.CategorySaveRequestDTO;
 import com.portfolio.apple.domain.category.CategoryService;
 import com.portfolio.apple.domain.item.Item;
-import com.portfolio.apple.domain.item.ItemRequestDTO;
+import com.portfolio.apple.domain.item.ItemSaveRequestDTO;
 import com.portfolio.apple.domain.item.ItemService;
 import com.portfolio.apple.domain.account.user.UserAccountRepository;
+import com.portfolio.apple.domain.itemFile.ItemFile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
+@TestExecutionListeners(value = {ResetTextExecutionListener.class}, mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
 class ShoppingItemServiceTest {
 
     @Autowired
@@ -44,8 +51,13 @@ class ShoppingItemServiceTest {
         String categoryName = "testCategory";
         CategorySaveRequestDTO categorySaveFormDTO = new CategorySaveRequestDTO(categoryName);
         Category category = categoryService.saveCategory(categorySaveFormDTO);
-        ItemRequestDTO itemFormDTO = new ItemRequestDTO(10, 1000, "itemName", true, "content", categoryName);
-        itemService.saveItem(itemFormDTO);
+        ItemSaveRequestDTO itemFormDTO = new ItemSaveRequestDTO(10, 1000, "itemName", true, "content", categoryName);
+        List<ItemFile> itemFiles = new ArrayList<>(
+                List.of(ItemFile.builder()
+                        .fileName("test").fileFullPath("test").fileType("test").orderNumber(1L).originalFileName("test").size(1L)
+                        .build())
+        );
+        itemService.saveItem(itemFormDTO, itemFiles);
     }
 
 

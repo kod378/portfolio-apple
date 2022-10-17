@@ -1,5 +1,6 @@
-package com.portfolio.apple.config.auth;
+package com.portfolio.apple.config;
 
+import com.portfolio.apple.config.auth.CustomOAuth2UserService;
 import com.portfolio.apple.domain.account.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

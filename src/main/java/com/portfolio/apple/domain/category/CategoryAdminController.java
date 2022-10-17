@@ -4,11 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -19,10 +17,10 @@ public class CategoryAdminController {
 
     private final CategoryService categoryService;
 
-    @GetMapping("")
+    @GetMapping("/list")
     public String list(Model model) {
         model.addAttribute("categorySaveRequestDTO", new CategorySaveRequestDTO());
-        model.addAttribute("categoryList", categoryService.findAll());
+        model.addAttribute("categoryDtoList", categoryService.findAllDto());
 
         return "admin/category/list";
     }
@@ -34,12 +32,6 @@ public class CategoryAdminController {
         }
 
         categoryService.saveCategory(categorySaveFormDTO);
-        return "redirect:/admin/category";
-    }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    public String handleIllegalArgumentException(IllegalArgumentException e, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("message", e.getMessage());
-        return "redirect:/admin/category";
+        return "redirect:/admin/category/list";
     }
 }

@@ -1,30 +1,21 @@
 package com.portfolio.apple.domain.category;
 
-import com.portfolio.apple.ResetTextExecutionListener;
+import com.portfolio.apple.CustomControllerTest;
 import com.portfolio.apple.domain.account.admin.AdminAccountRepository;
 import com.portfolio.apple.domain.account.admin.AdminAccountService;
 import com.portfolio.apple.domain.account.admin.AdminJoinFormDTO;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.TestExecutionEvent;
 import org.springframework.security.test.context.support.WithUserDetails;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-@TestExecutionListeners(value = {ResetTextExecutionListener.class}, mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
+@CustomControllerTest
 class CategoryAdminControllerTest {
 
     @Autowired
@@ -42,19 +33,14 @@ class CategoryAdminControllerTest {
         adminAccountService.saveAdminAccount(adminJoinFormDTO);
     }
 
-    @AfterEach
-    void tearDown() {
-        adminAccountRepository.deleteAll();
-    }
-
     @DisplayName("카테고리 조회")
     @Test
     @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
     public void list() throws Exception {
-        mockMvc.perform(get("/admin/category"))
+        mockMvc.perform(get("/admin/category/list"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("admin/category/list"))
-                .andExpect(model().attributeExists("categoryList"));
+                .andExpect(model().attributeExists("categoryDtoList"));
     }
 
     @DisplayName("카테고리 등록 - 성공")
@@ -65,7 +51,7 @@ class CategoryAdminControllerTest {
         mockMvc.perform(post("/admin/category")
                 .param("name", categoryName))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/admin/category"));
+                .andExpect(view().name("redirect:/admin/category/list"));
     }
 
     @DisplayName("카테고리 등록 - 실패 - 빈 파라미터값")
@@ -74,7 +60,9 @@ class CategoryAdminControllerTest {
     public void saveCategoryFail() throws Exception {
         mockMvc.perform(post("/admin/category"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("admin/category/list"));
+                .andExpect(view().name("admin/category/list"))
+                .andExpect(model().hasErrors())
+                .andExpect(model().attributeHasErrors("categorySaveRequestDTO"));
     }
 
     @DisplayName("카테고리 등록 - 실패 - 중복이름")
@@ -85,7 +73,7 @@ class CategoryAdminControllerTest {
         mockMvc.perform(post("/admin/category")
                 .param("name", categoryName))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/admin/category"));
+                .andExpect(view().name("redirect:/admin/category/list"));
 
         mockMvc.perform(post("/admin/category")
                 .param("name", categoryName))

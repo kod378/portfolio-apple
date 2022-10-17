@@ -33,22 +33,6 @@ public class AdminController{
         return "admin/login";
     }
 
-//    @PostMapping("/login")
-//    public String adminLogin(@Valid AdminLoginFormDTO adminLoginFormDTO, Errors errors, RedirectAttributes redirectAttributes) {
-//        if(errors.hasErrors()) {
-//            redirectAttributes.addFlashAttribute("message", "아이디와 비밀번호를 확인해주세요.");
-//            return "redirect:/admin/login";
-//        }
-//        adminAccountService.loginProcess(adminLoginFormDTO);
-//        return "redirect:/admin";
-//    }
-
-//    @ExceptionHandler(AuthenticationException.class)
-//    public String handleUsernameNotFoundException(AuthenticationException e, RedirectAttributes redirectAttributes) {
-//        redirectAttributes.addFlashAttribute("error", "아이디와 비밀번호를 확인해주세요.");
-//        return "redirect:/admin/login";
-//    }
-
     @GetMapping("/join")
     public String adminjoin(Model model) {
         model.addAttribute("adminJoinFormDTO", new AdminJoinFormDTO());

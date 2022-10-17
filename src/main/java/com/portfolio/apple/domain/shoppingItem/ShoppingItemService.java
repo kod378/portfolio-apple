@@ -2,7 +2,7 @@ package com.portfolio.apple.domain.shoppingItem;
 
 import com.portfolio.apple.domain.item.Item;
 import com.portfolio.apple.domain.account.user.UserAccount;
-import com.portfolio.apple.exception.NotEnoughStockException;
+import com.portfolio.apple.exception.item.NotEnoughStockException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +28,7 @@ public class ShoppingItemService {
     }
 
     @Transactional
-    public void removeShoppingItem(UserAccount userAccount, Item item, int quantity) throws NotEnoughStockException {
+    public void subtractShoppingItem(UserAccount userAccount, Item item, int quantity) throws NotEnoughStockException {
         ShoppingItem shoppingItem = shoppingItemRepository.findByUserAccountAndItem(userAccount, item).get();
         shoppingItem.removeQuantity(quantity);
         shoppingItemRepository.save(shoppingItem);

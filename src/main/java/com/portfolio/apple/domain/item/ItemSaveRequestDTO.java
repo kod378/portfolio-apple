@@ -9,7 +9,9 @@ import javax.validation.constraints.NotEmpty;
 
 @Data
 @NoArgsConstructor @AllArgsConstructor
-public class ItemRequestDTO {
+public class ItemSaveRequestDTO {
+
+    private Long id;
 
     @Min(0)
     private int stockQuantity;
@@ -26,13 +28,12 @@ public class ItemRequestDTO {
 
     private String categoryName;
 
-//    public ItemRequestDTO(int stockQuantity, int price, String name, boolean active, String content, String categoryName) {
-//        this.stockQuantity = stockQuantity;
-//        this.price = price;
-//        this.name = name;
-//        this.active = active;
-//        this.content = content;
-//        this.categoryName = categoryName;
-//    }
-
+    public ItemSaveRequestDTO(int stockQuantity, int price, String name, boolean active, String content, String categoryName) {
+        this.stockQuantity = stockQuantity;
+        this.price = price;
+        this.name = name;
+        this.active = active;
+        this.content = content;
+        this.categoryName = categoryName;
+    }
 }

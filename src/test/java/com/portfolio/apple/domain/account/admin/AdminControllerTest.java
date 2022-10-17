@@ -1,34 +1,23 @@
 package com.portfolio.apple.domain.account.admin;
 
-import com.portfolio.apple.ResetTextExecutionListener;
-import com.portfolio.apple.domain.account.Role;
-import org.junit.jupiter.api.AfterEach;
+import com.portfolio.apple.CustomControllerTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.TestExecutionEvent;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.context.support.WithUserDetails;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.transaction.BeforeTransaction;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureMockMvc
-@TestExecutionListeners(value = {ResetTextExecutionListener.class}, mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
+@CustomControllerTest
 class AdminControllerTest {
 
     @Autowired
@@ -44,11 +33,6 @@ class AdminControllerTest {
     void setUp() {
         AdminJoinFormDTO adminJoinFormDTO = new AdminJoinFormDTO("admin", "1234", "1234");
         adminAccountService.saveAdminAccount(adminJoinFormDTO);
-    }
-
-    @AfterEach
-    void tearDown() {
-        adminAccountRepository.deleteAll();
     }
 
     @DisplayName("관리자 인덱스 화면 - 미인증")

@@ -1,5 +1,7 @@
 package com.portfolio.apple.domain.category;
 
+import com.portfolio.apple.exception.category.CategoryDuplicateException;
+import com.portfolio.apple.exception.category.CategoryNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +48,8 @@ class CategoryServiceTest {
         CategorySaveRequestDTO categorySaveFormDTO2 = new CategorySaveRequestDTO("categoryName");
 
         //then
-        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> categoryService.saveCategory(categorySaveFormDTO2));
-        assertEquals("이미 존재하는 카테고리입니다.", illegalArgumentException.getMessage());
+        CategoryDuplicateException categoryDuplicateException = assertThrows(CategoryDuplicateException.class, () -> categoryService.saveCategory(categorySaveFormDTO2));
+        assertEquals("이미 존재하는 카테고리입니다.", categoryDuplicateException.getMessage());
     }
 
     @DisplayName("카테고리 수정 - 정상 입력값")
@@ -79,8 +81,8 @@ class CategoryServiceTest {
         CategorySaveRequestDTO categorySaveFormDTO2 = new CategorySaveRequestDTO("categoryName2");
 
         //then
-        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> categoryService.updateCategory(notExistId, categorySaveFormDTO2));
-        assertEquals("해당 카테고리가 없습니다. id="+notExistId, illegalArgumentException.getMessage());
+        CategoryNotFoundException categoryNotFoundException = assertThrows(CategoryNotFoundException.class, () -> categoryService.updateCategory(notExistId, categorySaveFormDTO2));
+        assertEquals("해당 카테고리가 없습니다. id="+notExistId, categoryNotFoundException.getMessage());
     }
 
     @DisplayName("카테고리 삭제 - 정상 입력값")
@@ -108,7 +110,7 @@ class CategoryServiceTest {
         Long notExistId = category.getId() + 1L;
 
         //then
-        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> categoryService.deleteCategory(notExistId));
-        assertEquals("해당 카테고리가 없습니다. id="+notExistId, illegalArgumentException.getMessage());
+        CategoryNotFoundException categoryNotFoundException = assertThrows(CategoryNotFoundException.class, () -> categoryService.deleteCategory(notExistId));
+        assertEquals("해당 카테고리가 없습니다. id="+notExistId, categoryNotFoundException.getMessage());
     }
 }

@@ -1,48 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Title</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 
 <header class="py-2 border-bottom" th:fragment="header">
-  <div class="container">
-    <div class="row d-flex">
-      <div class="col-md-6 d-flex justify-content-center align-items-center">
-        <a href="/" class="mb-2 mb-md-0 me-md-auto text-dark text-decoration-none">
-          <span class="fs-4">관리자용</span>
-        </a>
-      </div>
-      <div class="col-md-6 d-flex justify-content-center align-items-center pe-md-0">
-        <ul class="nav mb-2 mb-md-0 ms-md-auto">
-          <li class="nav-item">
-            <a class="nav-link "href="" th:href="@{/admin/category}">카테고리관리</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link "href="#">상품관리</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">리뷰관리</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">매출관리</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">고객게시판</a>
-          </li>
-        </ul>
-      </div>
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <a href="/" class="mb-2 mb-md-0 me-md-auto text-dark text-decoration-none">
+                    <span class="fs-4">관리자용</span>
+                </a>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center align-items-center pe-md-0">
+                <ul class="nav mb-2 mb-md-0 ms-md-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/category/list}">카테고리관리</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/item/list}">상품관리</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">리뷰관리</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">매출관리</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">고객게시판</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
 </header>
 
+<div th:fragment="categoryDtoList">
+    <!-- 카테고리 목록 나열 -->
+    <div class="list-group">
+        <span class="list-group-item list-group-item-action active">카테고리 목록</span>
+        <span class="list-group-item list-group-item-action" th:each="category : ${categoryDtoList}" th:text="${category.name}"></span>
+    </div>
+</div>
 
-
+<div th:fragment="message">
+    <section class="container" th:if="${message}" >
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <span th:text="${message}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </section>
+</div>
 
 </body>
 </html>

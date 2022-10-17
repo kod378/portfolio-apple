@@ -3,7 +3,7 @@ package com.portfolio.apple.domain.shoppingItem;
 import com.portfolio.apple.domain.BaseTimeEntity;
 import com.portfolio.apple.domain.account.user.UserAccount;
 import com.portfolio.apple.domain.item.Item;
-import com.portfolio.apple.exception.NotEnoughStockException;
+import com.portfolio.apple.exception.item.NotEnoughStockException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

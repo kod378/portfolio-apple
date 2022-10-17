@@ -1,36 +1,25 @@
 package com.portfolio.apple.domain.category;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.portfolio.apple.ResetTextExecutionListener;
+import com.portfolio.apple.CustomControllerTest;
 import com.portfolio.apple.domain.account.admin.AdminAccountRepository;
 import com.portfolio.apple.domain.account.admin.AdminAccountService;
 import com.portfolio.apple.domain.account.admin.AdminJoinFormDTO;
-import com.portfolio.apple.domain.account.admin.AdminLoginService;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.TestExecutionEvent;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.context.support.WithUserDetails;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-@TestExecutionListeners(value = {ResetTextExecutionListener.class}, mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
+@CustomControllerTest
 class CategoryApiControllerTest {
 
     @Autowired
@@ -57,12 +46,6 @@ class CategoryApiControllerTest {
         AdminJoinFormDTO adminJoinFormDTO = new AdminJoinFormDTO("admin", "1234", "1234");
         adminAccountService.saveAdminAccount(adminJoinFormDTO);
 
-    }
-
-    @AfterEach
-    void tearDown() {
-        adminAccountRepository.deleteAll();
-        categoryRepository.deleteAll();
     }
 
     @DisplayName("카테고리 수정 - 성공")

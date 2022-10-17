@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/adminFragments.html::head"></head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js" integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style>
+    /*.services-col img {*/
+    /*    object-fit: cover;*/
+    /*    object-position: center;*/
+    /*}*/
+
+    #services {
+        margin-left: 35%;
+        width: 330px;
+        background-color: rgba(96, 125, 139, 0.1);
+    }
+
+    #services .services-col {
+    }
+
+    #services .services-col .card {
+
+    }
+
+    .slick-prev:before, .slick-next:before {
+        color: black;
+    }
+
+</style>
+<body class="bg-light">
+<header th:replace="admin/adminFragments.html::header"></header>
+<main>
+
+    <div th:replace="admin/adminFragments.html::message"></div>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-3">
+                <div th:replace="admin/adminFragments.html::categoryDtoList"></div>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <h3 th:if="${itemDTO.id == null}">상품 등록</h3>
+                            <h3 th:if="${itemDTO.id != null}">상품 수정</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 상품 등록 폼 -->
+
+                <form action="/admin/item"
+                      method="post" enctype="multipart/form-data" th:object="${itemDTO}">
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="hidden" th:if="${itemDTO.id != null}" th:field="*{id}">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">상품명</label>
+                                <input type="text" class="form-control" placeholder="상품명을 입력하세요" id="name" name="name" th:field="*{name}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">가격</label>
+                                <input type="number" class="form-control" id="price" name="price" th:field="*{price}" placeholder="가격을 입력하세요">
+                            </div>
+                            <div class="mb-3">
+                                <label for="stockQuantity" class="form-label">재고</label>
+                                <input type="number" class="form-control" id="stockQuantity" name="stockQuantity" th:field="*{stockQuantity}" placeholder="재고를 입력하세요">
+                            </div>
+                            <div class="mb-3">
+                                <label for="categoryName" class="form-label">카테고리</label>
+                                <select class="form-select" id="categoryName" name="categoryName" th:field="*{categoryName}">
+                                    <option th:each="category : ${categoryDtoList}" th:text="${category.name}" th:value="${category.name}"></option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="active" class="form-label">노출여부</label>
+                                <input type="checkbox" class="form-check-input" id="active" name="active" th:field="*{active}">
+                            </div>
+                            <div class="mb-3">
+                                <section id="services" class="">
+                                    <div class="services">
+                                        <div id="slick-slide" class="" th:if="${itemDTO.id != null}">
+                                            <div class="services-col mx-2 my-3 d-block" th:each="itemFileDto : ${itemDTO.itemFileDtoList}">
+                                                <div class="card">
+                                                    <img th:src="${'/uploadImage/' + itemFileDto.fileName}" width="300" height="300">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title" th:text="${itemFileDto.originalFileName}">파일명</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="representationImage" class="form-label">대표이미지</label>
+                                <input class="form-control" type="file" id="representationImage" name="representationImage">
+                                <div class="d-flex align-items-center my-2" th:if="${itemDTO.id != null}">
+                                    <h6 class="pt-2" th:text="${itemDTO.itemFileDtoList[0].originalFileName}"></h6>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="image" class="form-label">상품이미지</label>
+                                <input class="form-control" type="file" id="image" name="image" multiple>
+
+                                <div  th:if="${itemDTO.id != null}" >
+                                    <div class="d-flex align-items-center my-2"th:each="i : ${#numbers.sequence(1, itemDTO.itemFileDtoList.size()-1, 1)}">
+                                        <button type="button" class="btn btn-danger me-2" th:onclick="itemFileJS.delete([(${itemDTO.itemFileDtoList[i].id})])">삭제</button>
+                                        <h6 class="pt-2" th:text="${itemDTO.itemFileDtoList[i].originalFileName}"></h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="content" class="form-label">상품설명</label>
+                                <textarea class="form-control" id="content" name="content" th:field="*{content}" rows="3"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" th:if="${itemDTO.id == null}">등록</button>
+                            <button type="submit" class="btn btn-primary" th:if="${itemDTO.id != null}">수정</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+<script>
+    $(document).ready(function () {
+        $('#slick-slide').slick({
+            centerMode: true,
+            dots: true,
+            arrows: true,
+            // infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            variableWidth: true
+            // variableHeight: true
+        });
+
+        $('#content').summernote({
+            height: 100
+        });
+    });
+
+
+    var itemFileJS = {
+        init: function () {
+            var _this = this;
+        },
+        delete: function (itemFileId) {
+
+            if(confirm('정말 삭제하시겠습니까?')) {
+                fetch('/api/itemFile/' + itemFileId, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
+                    }
+                }).then(function (response) {
+                    if(response.status === 200){
+                        alert('파일 삭제가 완료되었습니다.');
+                        location.reload();
+                    }else{
+                        alert('시스템에 오류가 발생했습니다. 새로고침 후 다시 시도해주세요.');
+                    }
+                });
+            }
+        }
+    };
+    itemFileJS.init();
+</script>
+</body>
+</html>

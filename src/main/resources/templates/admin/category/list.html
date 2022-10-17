@@ -7,12 +7,7 @@
 
 <main>
 
-    <section class="container" th:if="${message}" >
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <span th:text="${message}"></span>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    </section>
+    <div th:replace="admin/adminFragments.html::message"></div>
 
     <section class="container">
         <!--    카테고리 등록 폼-->
@@ -27,6 +22,7 @@
                         <div class="invalid-feedback">
                             카테고리 이름을 등록해주세요
                         </div>
+                        <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-primary" type="submit">카테고리 등록</button>
@@ -47,14 +43,12 @@
                     <tr>
                         <th scope="col">카테고리 번호</th>
                         <th scope="col">카테고리 이름</th>
-                        <th scope="col">카테고리 등록일</th>
-                        <th scope="col">카테고리 수정일</th>
                         <th scope="col">카테고리 수정</th>
                         <th scope="col">카테고리 삭제</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="category : ${categoryList}">
+                    <tr th:each="category : ${categoryDtoList}">
                         <th scope="row" th:text="${category.id}"></th>
                         <td>
                             <input type="hidden" name="_method" value="put">
@@ -64,8 +58,6 @@
                                 카테고리 이름을 등록해주세요
                             </div>
                         </td>
-                        <td th:text="${category.createdDateTime}"></td>
-                        <td th:text="${category.lastModifiedDateTime}"></td>
                         <td>
                             <button class="btn btn-primary" type="button"
                                     th:onclick="categoryJS.update([(${category.id})],[(${category.name})])">수정</button>
