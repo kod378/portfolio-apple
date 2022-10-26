@@ -58,7 +58,7 @@ public class SecurityConfig {
                     .headers().frameOptions().disable()
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/", "/h2-console/**", "/freeList", "/api/**").permitAll()
+                    .antMatchers("/", "/h2-console/**", "/uploadImage/**", "/item/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .oauth2Login()

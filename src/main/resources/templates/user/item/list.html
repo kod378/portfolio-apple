@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html::head">
+</head>
+<body class="bg-light">
+
+
+<nav th:replace="fragments.html::nav"></nav>
+
+<header th:replace="fragments.html::header"></header>
+
+<div th:replace="fragments.html::userLoginRequestMessage"></div>
+
+<main>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5 bg-dark bg-gradient">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">상품 목록</h1>
+                <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+                <p>
+                    <a href="#" class="btn btn-primary my-2">Main call to action</a>
+                    <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <span class="list-group-item list-group-item-action active">카테고리 목록</span>
+                        <span class="list-group-item list-group-item-action" th:each="category : ${categoryDtoList}" th:text="${category.name}"></span>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="row g-3">
+                        <div class="col-md-4" th:each="itemDto : ${itemDtoPage}">
+                            <div class="card shadow-sm">
+                                <a th:href="@{/item/{id}(id=${itemDto.id})}" class="text-decoration-none text-reset">
+                                    <img class="w-100" th:src="${'/uploadImage/s_' + itemDto.itemFileDtoList[0].fileName}">
+                                    <div class="card-body">
+                                        <p class="card-text" th:text="${itemDto.name}">아이템명</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 페이징 -->
+                    <div class="row">
+                        <div class="col-12">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item" th:classappend="${itemDtoPage.hasPrevious() == false} ? 'disabled'">
+                                        <a class="page-link" th:href="@{/admin/item/list(page=${itemDtoPage.getNumber() - 1})}" tabindex="-1">Previous</a>
+                                    </li>
+                                    <li class="page-item" th:classappend="${i == itemDtoPage.getNumber()} ? 'active'"
+                                        th:each="i : ${#numbers.sequence(pageStart, pageEnd)}">
+                                        <a class="page-link" th:href="@{/admin/item/list(page=${i})}" th:text="${i+1}"></a>
+                                    </li>
+                                    <li class="page-item" th:classappend="${itemDtoPage.hasNext() == false} ? 'disabled'">
+                                        <a class="page-link" th:href="@{/admin/item/list(page=${itemDtoPage.getNumber() + 1})}">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+</script>
+</body>
+</html>

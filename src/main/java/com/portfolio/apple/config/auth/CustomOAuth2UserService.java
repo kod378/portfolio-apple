@@ -2,6 +2,7 @@ package com.portfolio.apple.config.auth;
 
 import com.portfolio.apple.domain.account.user.UserAccount;
 import com.portfolio.apple.domain.account.user.UserAccountRepository;
+import com.portfolio.apple.domain.account.user.UserAdapter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Service
@@ -22,7 +25,6 @@ import java.util.Collections;
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     private final UserAccountRepository userRepository;
-    private final HttpSession httpSession;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -37,12 +39,23 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         UserAccount user = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new SessionUser(user));
+        Map<String, Object> userAttributesMap = getUserAttributesMap(attributes.getAttributes(), user);
 
-        return new DefaultOAuth2User(
+//        return new DefaultOAuth2User(
+//                Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
+//                attributes.getAttributes(),
+//                attributes.getNameAttributeKey());
+        return new UserAdapter(
                 Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
-                attributes.getAttributes(),
+                userAttributesMap,
                 attributes.getNameAttributeKey());
+    }
+
+    private Map<String, Object> getUserAttributesMap(Map<String, Object> attributes, UserAccount user) {
+        Map<String, Object> userAttributes = new HashMap<>();
+        userAttributes.put("id", attributes.get("id"));
+        userAttributes.put("userAccount", user);
+        return userAttributes;
     }
 
     private UserAccount saveOrUpdate(OAuthAttributes attributes) {

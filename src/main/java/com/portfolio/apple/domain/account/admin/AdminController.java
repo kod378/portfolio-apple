@@ -49,9 +49,4 @@ public class AdminController{
         return "redirect:/admin/login";
     }
 
-    @GetMapping("/TEST")
-    public String adminTEST(Model model) {
-        return "admin/TEST";
-    }
-
 }

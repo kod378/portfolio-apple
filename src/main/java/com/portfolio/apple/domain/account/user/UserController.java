@@ -1,6 +1,14 @@
 package com.portfolio.apple.domain.account.user;
 
+import com.portfolio.apple.domain.item.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -16,9 +26,15 @@ import java.util.Optional;
 public class UserController {
 
     private final UserAccountService userAccountService;
+    private final ItemService itemService;
 
     @GetMapping({"", "/"})
-    public String userIndex() {
+    public String userIndex(Model model, @PageableDefault Pageable pageable, @CurrentUser UserAccount userAccount) {
+        model.addAttribute("itemDtoPage",itemService.findPageWithResponseDto(pageable));
+        if(userAccount != null) {
+            model.addAttribute("userName", userAccount.getName());
+        }
+
         return "index";
     }
 
@@ -29,21 +45,4 @@ public class UserController {
         return "redirect:" + referer.orElse("/");
     }
 
-    @GetMapping("/freeList")
-    public String freeList() {
-        return "user/itemList";
-    }
-
-    @GetMapping("/itemList")
-    public String itemList() {
-        return "user/itemList";
-    }
-
-    @GetMapping("/itembuyTest")
-    public String itembuyTest(@CurrentUser UserAccount userAccount, Model model) {
-        if(userAccount != null) {
-            model.addAttribute("userAccount", userAccount);
-        }
-        return "user/itembuyTest";
-    }
 }

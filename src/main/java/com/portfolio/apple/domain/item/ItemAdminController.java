@@ -4,6 +4,7 @@ import com.portfolio.apple.domain.category.CategoryService;
 import com.portfolio.apple.domain.itemFile.ItemFile;
 import com.portfolio.apple.domain.itemFile.ItemFileService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -30,8 +31,14 @@ public class ItemAdminController {
     @GetMapping("/list")
     public String itemList(Model model,
                            @PageableDefault Pageable pageable) {
+        Page<ItemResponseDTO> pageWithResponseDto = itemService.findPageWithResponseDto(pageable);
+        int pageStart = (pageable.getPageNumber() / 10) * 10;
+        int pageEnd = Math.min(pageStart + 9, pageWithResponseDto.getTotalPages());
+
         model.addAttribute("categoryDtoList", categoryService.findAllDto());
-        model.addAttribute("itemDtoList", itemService.findPageWithResponseDto(pageable));
+        model.addAttribute("itemDtoPage", pageWithResponseDto);
+        model.addAttribute("pageStart", pageStart);
+        model.addAttribute("pageEnd", pageEnd);
         return "admin/item/list";
     }
 

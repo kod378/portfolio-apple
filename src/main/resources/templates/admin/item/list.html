@@ -41,7 +41,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="item : ${itemDtoList}">
+                            <tr th:each="item : ${itemDtoPage}">
                                 <td>
                                     <img th:src="${'/uploadImage/s_' + item.itemFileDtoList[0].fileName}" width="100" height="100">
                                 </td>
@@ -57,6 +57,27 @@
                             </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <!-- 페이징 -->
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item" th:classappend="${itemDtoPage.hasPrevious() == false} ? 'disabled'">
+                                    <a class="page-link" th:href="@{/admin/item/list(page=${itemDtoPage.getNumber() - 1})}" tabindex="-1">Previous</a>
+                                </li>
+
+                                <li class="page-item" th:classappend="${i == itemDtoPage.getNumber()} ? 'active'"
+                                    th:each="i : ${#numbers.sequence(pageStart, pageEnd)}">
+                                    <a class="page-link" th:href="@{/admin/item/list(page=${i})}" th:text="${i+1}"></a>
+                                </li>
+
+                                <li class="page-item" th:classappend="${itemDtoPage.hasNext() == false} ? 'disabled'">
+                                    <a class="page-link" th:href="@{/admin/item/list(page=${itemDtoPage.getNumber() + 1})}">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>

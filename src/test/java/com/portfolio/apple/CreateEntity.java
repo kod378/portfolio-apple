@@ -54,4 +54,10 @@ public class CreateEntity {
         itemFileList.add(itemFile);
         return itemFileList;
     }
+
+    public Item getSavedSampleItem() {
+        Category category = saveCategory("testCategory");
+        List<ItemFile> itemFileList = createItemFileList();
+        return saveItem(category, itemFileList, "testItem");
+    }
 }

@@ -52,7 +52,7 @@ class ItemAdminControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("admin/item/list"))
                 .andExpect(model().attributeExists("categoryDtoList"))
-                .andExpect(model().attributeExists("itemDtoList"));
+                .andExpect(model().attributeExists("itemDtoPage"));
     }
 
     @DisplayName("아이템 저장 화면 조회 - 정상")

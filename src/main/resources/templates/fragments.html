@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,13 +19,14 @@
                     <!--                <a class="navbar-brand" href="#">Hidden brand</a>-->
                     <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link "href="#" aria-current="page">홈</a>
+                            <a class="nav-link "href="/" aria-current="page">홈</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/oauth2/authorization/google">구글</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:;" onclick="OAuthLogin.naver();">네이버</a>
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link" href="/oauth2/authorization/google">구글</a>-->
+<!--                        </li>-->
+                        <li class="nav-item" sec:authorize="isAnonymous()">
+<!--                            <a class="nav-link" onclick="OAuthLogin.naver();">네이버</a>-->
+                            <a class="nav-link" href="/oauth2/authorization/naver">네이버</a>
                         </li>
                         <p th:text="${userName}"></p>
                     </ul>
@@ -36,7 +37,7 @@
 
     <header class="py-2 border-bottom" th:fragment="header">
         <div class="container">
-            <div class="row d-flex">
+            <div class="row">
                 <div class="col-md-8 d-flex justify-content-center align-items-center">
                     <a href="/" class="mb-2 mb-md-0 me-md-auto text-dark text-decoration-none">
                         <img src="/images/freeApple.jpg" class="img-fluid" width="100">
@@ -49,7 +50,7 @@
                             <a class="nav-link "href="#">소개</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">상품</a>
+                            <a class="nav-link" href="/item/list">상품</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">고객게시판</a>
