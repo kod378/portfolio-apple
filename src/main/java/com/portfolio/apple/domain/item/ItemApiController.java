@@ -11,7 +11,7 @@ public class ItemApiController {
 
     private final ItemService itemService;
 
-    @DeleteMapping("/api/item/{id}")
+    @DeleteMapping("/admin/api/item/{id}")
     public Long deleteItem(@PathVariable Long id) throws Exception {
         return itemService.deleteItem(id);
     }

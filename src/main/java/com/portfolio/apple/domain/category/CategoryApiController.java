@@ -10,7 +10,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/category")
+@RequestMapping("admin/api/category")
 public class CategoryApiController {
 
     private final CategoryService categoryService;

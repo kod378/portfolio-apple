@@ -19,7 +19,7 @@ class UserControllerTest {
     @DisplayName("유저 인덱스 화면 조회 - 정상")
     @Test
     public void index() throws Exception {
-        mockMvc.perform(get("/user"))
+        mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"))
                 .andExpect(model().attributeExists("itemDtoPage"));

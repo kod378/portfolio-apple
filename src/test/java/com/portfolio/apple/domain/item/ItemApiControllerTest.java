@@ -2,9 +2,11 @@ package com.portfolio.apple.domain.item;
 
 import com.portfolio.apple.CreateEntity;
 import com.portfolio.apple.CustomControllerTest;
+import com.portfolio.apple.TestWithAdminAccount;
 import com.portfolio.apple.domain.category.Category;
 import com.portfolio.apple.domain.itemFile.ItemFile;
 import com.portfolio.apple.domain.itemFile.ItemFileRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +28,20 @@ class ItemApiControllerTest {
     @Autowired private ItemFileRepository itemFileRepository;
     @Autowired private CreateEntity createEntity;
 
+    @BeforeEach
+    void setUp() {
+        createEntity.setUpAdminAccount();
+    }
+
     @DisplayName("아이템 삭제 - 정상")
-    @Test
+    @TestWithAdminAccount
     public void deleteItem() throws Exception {
         Category category = createEntity.saveCategory("testCategory");
         List<ItemFile> itemFile = createEntity.createItemFileList();
-        Long itemFileId = itemFile.get(0).getId();
         Item item = createEntity.saveItem(category, itemFile, "testItem");
         Long itemId = item.getId();
-        mockMvc.perform(delete("/api/item/" + itemId))
+        Long itemFileId = itemFile.get(0).getId();
+        mockMvc.perform(delete("/admin/api/item/" + itemId))
                 .andExpect(status().isOk())
                 .andExpect(content().string(String.valueOf(itemId)));
 

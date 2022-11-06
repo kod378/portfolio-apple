@@ -44,10 +44,12 @@
                     <div id="slick-slide" class="">
                         <div class="slide-item" th:each="itemDto : ${itemDtoPage}">
                             <div class="card shadow-sm">
-                                <img th:src="${'/uploadImage/s_' + itemDto.itemFileDtoList[0].fileName}">
-                                <div class="card-body">
-                                    <p class="card-text" th:text="${itemDto.itemFileDtoList[0].originalFileName}">파일명</p>
-                                </div>
+                                <a th:href="@{/item/{id}(id=${itemDto.id})}" class="text-decoration-none text-reset">
+                                    <img class="w-100" th:src="${'/uploadImage/s_' + itemDto.itemFileDtoList[0].fileName}">
+                                    <div class="card-body">
+                                        <p class="card-text" th:text="${itemDto.name}">아이템명</p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>

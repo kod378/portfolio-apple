@@ -9,9 +9,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
       integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
       crossorigin="anonymous" referrerpolicy="no-referrer"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
         integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -78,7 +75,7 @@
                             </div>
                             <div>
                                 <h2 th:text="${'가격 : ' + itemDto.price}"></h2>
-                                <span class="d-none" id="price" th:text="${itemDto.price}"></span>
+
                             </div>
                             <!--                        <div>-->
                             <!--                            <h6 th:text="${'남은수량 : ' + itemDto.stockQuantity}"></h6>-->
@@ -86,20 +83,14 @@
                             <div class="row border m-2">
                                 <h5 th:text="${itemDto.name}">상품명</h5>
                                 <div class="col">
-                                    <a href="javascript:;" class="text-decoration-none" th:onclick="changeOrderAmount(-1, 1, [(${itemDto.stockQuantity})])">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-minus" viewBox="0 0 16 16">
-                                            <path d="M5.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
-                                            <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
-                                        </svg>
+                                    <a href="javascript:;" class="text-decoration-none" th:onclick="changeOrderQuantity(-1, 1, [(${itemDto.stockQuantity})])">
+                                        <div th:replace="fragments.html::minusIcon"></div>
                                     </a>
 
-                                    <input type="text" id="order-amount" title="수량입력" value="1" th:onchange="changeOrderAmount(0, 1, [(${itemDto.stockQuantity})])">
-
-                                    <a href="javascript:;" th:onclick="changeOrderAmount(1, 1, [(${itemDto.stockQuantity})])">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-plus" viewBox="0 0 16 16">
-                                            <path d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z"/>
-                                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                        </svg>
+                                    <input type="text" id="order-quantity" title="수량입력" value="1" th:onchange="changeOrderQuantity(0, 1, [(${itemDto.stockQuantity})])">
+                                    <span class="d-none" id="price" th:text="${itemDto.price}"></span>
+                                    <a href="javascript:;" class="text-decoration-none" th:onclick="changeOrderQuantity(1, 1, [(${itemDto.stockQuantity})])">
+                                        <div th:replace="fragments.html::plusIcon"></div>
                                     </a>
                                 </div>
                                 <div class="col d-flex justify-content-end">
@@ -134,43 +125,49 @@
         // variableHeight: true
     });
 
-    function changeOrderAmount(changeAmount, minAmount, maxAmount) {
-        let orderAmount = $('#order-amount');
+    function changeOrderQuantity(changeQuantity, minQuantity, maxQuantity) {
+        let orderQuantity = $('#order-quantity');
         let orderPrice = $('#order-price');
         const price = $('#price').text();
 
-        let amount = parseInt(orderAmount.val()) + changeAmount;
-        if (amount < minAmount) {
-            amount = minAmount;
-        } else if (amount > maxAmount) {
-            amount = maxAmount;
-            alert('최대 주문 수량은 ' + maxAmount + '개 입니다.');
+        let quantity = parseInt(orderQuantity.val()) + changeQuantity;
+        if (quantity < minQuantity) {
+            quantity = minQuantity;
+        } else if (quantity > maxQuantity) {
+            quantity = maxQuantity;
+            alert('최대 주문 수량은 ' + maxQuantity + '개 입니다.');
         }
-        orderAmount.val(amount);
-        orderPrice.text(amount * price);
+        orderQuantity.val(quantity);
+        orderPrice.text(quantity * price);
     }
 
     function addShoppingItem(itemId) {
-        let orderAmount = $('#order-amount');
-        let amount = parseInt(orderAmount.val());
-        if (amount < 1) {
+        let orderQuantity = $('#order-quantity');
+        let quantity = parseInt(orderQuantity.val());
+        if (quantity < 1) {
             alert('최소 주문 수량은 1개 입니다.');
             return;
         }
         $.ajax({
             type: 'POST',
-            url: '/api/ShoppingItem',
+            url: '/api/shoppingItem',
             data: JSON.stringify({
-                itemId: itemId,
-                amount: amount
+                "itemId": itemId,
+                "quantity": quantity
             }),
             contentType: 'application/json; charset=utf-8',
-            dataType: 'json'
-        }).done(function () {
-            alert('장바구니에 상품이 담겼습니다.');
-            location.href = '/cart';
+        }).done(function (data) {
+            if (data >= 1) {
+                alert('장바구니에 담기 성공');
+            } else {
+                alert('장바구니에 담기 실패');
+            }
         }).fail(function (error) {
-            alert(JSON.stringify(error));
+            //TODO: 네이버 로그인을 새 창으로 띄워서 로그인을 하도록 구현하면 아래 코드 수정가능성 큼.
+            console.log(error.responseText);
+            if (error.responseText === 'ApiUnAuthorized'){
+                window.location.href = '/redirectReferer';
+            }
         });
     }
 </script>

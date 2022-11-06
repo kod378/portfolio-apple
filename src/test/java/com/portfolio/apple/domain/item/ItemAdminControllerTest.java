@@ -2,6 +2,7 @@ package com.portfolio.apple.domain.item;
 
 import com.portfolio.apple.CreateEntity;
 import com.portfolio.apple.CustomControllerTest;
+import com.portfolio.apple.TestWithAdminAccount;
 import com.portfolio.apple.domain.account.admin.AdminAccountService;
 import com.portfolio.apple.domain.account.admin.AdminJoinFormDTO;
 import com.portfolio.apple.domain.category.Category;
@@ -40,13 +41,11 @@ class ItemAdminControllerTest {
 
     @BeforeEach
     void setUp() {
-        AdminJoinFormDTO adminJoinFormDTO = new AdminJoinFormDTO("admin", "1234", "1234");
-        adminAccountService.saveAdminAccount(adminJoinFormDTO);
+        createEntity.setUpAdminAccount();
     }
 
     @DisplayName("아이템 리스트 화면 조회 - 정상")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     void viewItemList() throws Exception {
         mockMvc.perform(get("/admin/item/list"))
                 .andExpect(status().isOk())
@@ -56,8 +55,7 @@ class ItemAdminControllerTest {
     }
 
     @DisplayName("아이템 저장 화면 조회 - 정상")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     void viewItemSave() throws Exception {
         mockMvc.perform(get("/admin/item/save"))
                 .andExpect(status().isOk())
@@ -66,8 +64,7 @@ class ItemAdminControllerTest {
     }
 
     @DisplayName("아이템 저장 - 정상")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     void itemSave() throws Exception {
         //카테고리 등록
         Category category = createEntity.saveCategory("testCategory");
@@ -88,8 +85,7 @@ class ItemAdminControllerTest {
     }
 
     @DisplayName("아이템 저장 - 에러 - 비정상 파일")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     void itemSaveWithInvalidFile() throws Exception {
         //카테고리 등록
         Category category = createEntity.saveCategory("testCategory");
@@ -108,8 +104,7 @@ class ItemAdminControllerTest {
     }
 
     @DisplayName("아이템 저장 - 에러 - 대표이미지 누락")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     void itemSaveWithMissingFile() throws Exception {
         //카테고리 등록
         Category category = createEntity.saveCategory("testCategory");
@@ -126,8 +121,7 @@ class ItemAdminControllerTest {
     }
 
     @DisplayName("아이템 수정화면 - 정상")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     void viewItemUpdate() throws Exception {
         Category category = createEntity.saveCategory("testCategory");
         List<ItemFile> itemFile = createEntity.createItemFileList();
@@ -140,8 +134,7 @@ class ItemAdminControllerTest {
     }
 
     @DisplayName("아이템 수정 - 정상")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     void itemUpdate() throws Exception {
         Category category = createEntity.saveCategory("testCategory");
         List<ItemFile> itemFile = createEntity.createItemFileList();

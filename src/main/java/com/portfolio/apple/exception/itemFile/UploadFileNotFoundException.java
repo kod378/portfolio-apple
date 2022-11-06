@@ -1,6 +1,8 @@
 package com.portfolio.apple.exception.itemFile;
 
-public class UploadFileNotFoundException extends RuntimeException {
+import com.portfolio.apple.exception.NotFoundByApiException;
+
+public class UploadFileNotFoundException extends NotFoundByApiException {
     public UploadFileNotFoundException(String message) {
         super(message);
     }

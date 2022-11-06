@@ -1,6 +1,8 @@
 package com.portfolio.apple.exception.category;
 
-public class CategoryNotFoundException extends RuntimeException {
+import com.portfolio.apple.exception.NotFoundByApiException;
+
+public class CategoryNotFoundException extends NotFoundByApiException {
     public CategoryNotFoundException(String message) {
         super(message);
     }

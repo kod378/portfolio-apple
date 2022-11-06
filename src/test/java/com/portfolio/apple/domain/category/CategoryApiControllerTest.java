@@ -1,7 +1,9 @@
 package com.portfolio.apple.domain.category;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.portfolio.apple.CreateEntity;
 import com.portfolio.apple.CustomControllerTest;
+import com.portfolio.apple.TestWithAdminAccount;
 import com.portfolio.apple.domain.account.admin.AdminAccountRepository;
 import com.portfolio.apple.domain.account.admin.AdminAccountService;
 import com.portfolio.apple.domain.account.admin.AdminJoinFormDTO;
@@ -26,11 +28,9 @@ class CategoryApiControllerTest {
     private CategoryService categoryService;
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private CreateEntity createEntity;
 
-    @Autowired
-    private AdminAccountService adminAccountService;
-    @Autowired
-    private AdminAccountRepository adminAccountRepository;
 
     @Autowired
     private MockMvc mockMvc;
@@ -43,18 +43,15 @@ class CategoryApiControllerTest {
         CategorySaveRequestDTO categorySaveRequestDTO = new CategorySaveRequestDTO("test");
         categoryService.saveCategory(categorySaveRequestDTO);
 
-        AdminJoinFormDTO adminJoinFormDTO = new AdminJoinFormDTO("admin", "1234", "1234");
-        adminAccountService.saveAdminAccount(adminJoinFormDTO);
-
+        createEntity.setUpAdminAccount();
     }
 
     @DisplayName("카테고리 수정 - 성공")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     public void updateCategory() throws Exception {
         String categoryName = "test2";
         CategorySaveRequestDTO categorySaveRequestDTO = new CategorySaveRequestDTO(categoryName);
-        mockMvc.perform(put("/api/category/1")
+        mockMvc.perform(put("/admin/api/category/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(categorySaveRequestDTO)))
                 .andExpect(status().isOk())
@@ -62,13 +59,12 @@ class CategoryApiControllerTest {
     }
 
     @DisplayName("카테고리 수정 - 실패")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     public void updateCategoryFail() throws Exception {
         String categoryName = "test2";
         CategorySaveRequestDTO categorySaveRequestDTO = new CategorySaveRequestDTO(categoryName);
 
-        mockMvc.perform(put("/api/category/2")
+        mockMvc.perform(put("/admin/api/category/2")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(categorySaveRequestDTO)))
                 .andExpect(status().isBadRequest())
@@ -76,10 +72,9 @@ class CategoryApiControllerTest {
     }
 
     @DisplayName("카테고리 삭제 - 성공")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     public void deleteCategory() throws Exception {
-        mockMvc.perform(delete("/api/category/1"))
+        mockMvc.perform(delete("/admin/api/category/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("1"));
 
@@ -87,10 +82,9 @@ class CategoryApiControllerTest {
     }
 
     @DisplayName("카테고리 삭제 - 실패")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     public void deleteCategoryFail() throws Exception {
-        mockMvc.perform(delete("/api/category/2"))
+        mockMvc.perform(delete("/admin/api/category/2"))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string("해당 카테고리가 없습니다. id=2"));
     }

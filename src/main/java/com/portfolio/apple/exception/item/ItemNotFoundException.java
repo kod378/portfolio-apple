@@ -1,6 +1,8 @@
 package com.portfolio.apple.exception.item;
 
-public class ItemNotFoundException extends RuntimeException {
+import com.portfolio.apple.exception.NotFoundByApiException;
+
+public class ItemNotFoundException extends NotFoundByApiException {
     public ItemNotFoundException(String message) {
         super(message);
     }

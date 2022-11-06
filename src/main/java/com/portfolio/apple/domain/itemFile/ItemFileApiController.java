@@ -14,7 +14,7 @@ public class ItemFileApiController {
 
     private final ItemFileService itemFileService;
 
-    @DeleteMapping("/api/itemFile/{id}")
+    @DeleteMapping("/admin/api/itemFile/{id}")
     public Long deleteItemFile(@PathVariable Long id) throws Exception {
 
         return itemFileService.deleteItemFile(id);

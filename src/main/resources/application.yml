@@ -30,7 +30,7 @@ file:
 
 logging:
   level:
-    root: info
+    root: debug
     org.hibernate.sql: debug
 
 server:

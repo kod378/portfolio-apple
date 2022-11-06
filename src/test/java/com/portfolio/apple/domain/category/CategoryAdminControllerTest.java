@@ -1,6 +1,8 @@
 package com.portfolio.apple.domain.category;
 
+import com.portfolio.apple.CreateEntity;
 import com.portfolio.apple.CustomControllerTest;
+import com.portfolio.apple.TestWithAdminAccount;
 import com.portfolio.apple.domain.account.admin.AdminAccountRepository;
 import com.portfolio.apple.domain.account.admin.AdminAccountService;
 import com.portfolio.apple.domain.account.admin.AdminJoinFormDTO;
@@ -19,23 +21,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class CategoryAdminControllerTest {
 
     @Autowired
-    private AdminAccountRepository adminAccountRepository;
-
-    @Autowired
-    private AdminAccountService adminAccountService;
+    private CreateEntity createEntity;
 
     @Autowired
     private MockMvc mockMvc;
 
     @BeforeEach
     void setUp() {
-        AdminJoinFormDTO adminJoinFormDTO = new AdminJoinFormDTO("admin", "1234", "1234");
-        adminAccountService.saveAdminAccount(adminJoinFormDTO);
+        createEntity.setUpAdminAccount();
     }
 
     @DisplayName("카테고리 조회")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     public void list() throws Exception {
         mockMvc.perform(get("/admin/category/list"))
                 .andExpect(status().isOk())
@@ -44,8 +41,7 @@ class CategoryAdminControllerTest {
     }
 
     @DisplayName("카테고리 등록 - 성공")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     public void saveCategory() throws Exception {
         String categoryName = "test";
         mockMvc.perform(post("/admin/category")
@@ -55,8 +51,7 @@ class CategoryAdminControllerTest {
     }
 
     @DisplayName("카테고리 등록 - 실패 - 빈 파라미터값")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     public void saveCategoryFail() throws Exception {
         mockMvc.perform(post("/admin/category"))
                 .andExpect(status().isOk())
@@ -66,8 +61,7 @@ class CategoryAdminControllerTest {
     }
 
     @DisplayName("카테고리 등록 - 실패 - 중복이름")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     public void saveCategoryFail2() throws Exception {
         String categoryName = "test";
         mockMvc.perform(post("/admin/category")

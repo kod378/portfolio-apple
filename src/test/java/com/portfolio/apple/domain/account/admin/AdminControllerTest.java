@@ -1,5 +1,6 @@
 package com.portfolio.apple.domain.account.admin;
 
+import com.portfolio.apple.CreateEntity;
 import com.portfolio.apple.CustomControllerTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -29,10 +30,11 @@ class AdminControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired CreateEntity createEntity;
+
     @BeforeEach
     void setUp() {
-        AdminJoinFormDTO adminJoinFormDTO = new AdminJoinFormDTO("admin", "1234", "1234");
-        adminAccountService.saveAdminAccount(adminJoinFormDTO);
+        createEntity.setUpAdminAccount();
     }
 
     @DisplayName("관리자 인덱스 화면 - 미인증")

@@ -22,7 +22,7 @@ public class ExceptionHandlerController {
         return "redirect:/admin/category/list";
     }
 
-    @ExceptionHandler({CategoryNotFoundException.class, ItemNotFoundException.class, UploadFileNotFoundException.class})
+    @ExceptionHandler(NotFoundByApiException.class)
     public ResponseEntity<String> categoryNotFoundException(RuntimeException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }

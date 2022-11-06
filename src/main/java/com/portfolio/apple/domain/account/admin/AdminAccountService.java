@@ -22,7 +22,6 @@ public class AdminAccountService {
 
     private final AdminAccountRepository adminAccountRepository;
     private final PasswordEncoder passwordEncoder;
-    private final AuthenticationManager authenticationManager;
 
     public AdminAccount saveAdminAccount(AdminJoinFormDTO adminJoinFormDTO) {
         AdminAccount adminAccount = AdminAccount.builder()
@@ -33,17 +32,4 @@ public class AdminAccountService {
 
         return adminAccountRepository.save(adminAccount);
     }
-
-//    public void loginProcess(AdminLoginFormDTO adminLoginFormDTO) {
-//        AdminAccount adminAccount = adminAccountRepository.findByAccountId(adminLoginFormDTO.getAccountId())
-//                .orElseThrow(() -> new UsernameNotFoundException(adminLoginFormDTO.getAccountId()));
-//
-//        if(!passwordEncoder.matches(adminLoginFormDTO.getPassword(), adminAccount.getPassword())) {
-//            throw new UsernameNotFoundException(adminLoginFormDTO.getAccountId());
-//        }
-//        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-//                adminLoginFormDTO.getAccountId(), adminLoginFormDTO.getPassword(), List.of(new SimpleGrantedAuthority("ROLE_ADMIN")));
-//        Authentication authenticate = authenticationManager.authenticate(token);
-//        SecurityContextHolder.getContext().setAuthentication(authenticate);
-//    }
 }

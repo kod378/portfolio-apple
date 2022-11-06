@@ -37,18 +37,28 @@ public class ShoppingItem extends BaseTimeEntity {
         return shoppingItem;
     }
 
-    public void addQuantity(int quantity, int stockQuantity) {
-        if (this.quantity + quantity > stockQuantity) {
-            throw new NotEnoughStockException("Stock is not enough");
-        }
-        this.quantity += quantity;
-    }
+//    public void addQuantity(int quantity, int stockQuantity) {
+//        if (this.quantity + quantity > stockQuantity) {
+//            throw new NotEnoughStockException("Stock is not enough");
+//        }
+//        this.quantity += quantity;
+//    }
+//
+//    public void removeQuantity(int quantity) {
+//        int restQuantity = this.quantity - quantity;
+//        if (restQuantity < 1) { // 최소 1개 이상은 있어야 한다.
+//            throw new NotEnoughStockException("ShoppingItem quantity must be more than 1");
+//        }
+//        this.quantity = restQuantity;
+//    }
 
-    public void removeQuantity(int quantity) {
-        int restQuantity = this.quantity - quantity;
-        if (restQuantity < 1) { // 최소 1개 이상은 있어야 한다.
+    public void changeQuantity(int QuantityToChange, int stockQuantity) {
+        if (QuantityToChange < 1) { // 최소 1개 이상은 있어야 한다.
             throw new NotEnoughStockException("ShoppingItem quantity must be more than 1");
         }
-        this.quantity = restQuantity;
+        if (QuantityToChange > stockQuantity) {
+            throw new NotEnoughStockException("Stock is not enough");
+        }
+        this.quantity = QuantityToChange;
     }
 }

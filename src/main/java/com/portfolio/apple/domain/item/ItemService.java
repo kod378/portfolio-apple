@@ -50,4 +50,8 @@ public class ItemService {
         itemRepository.delete(findItem);
         return id;
     }
+
+    public Item findById(Long itemId) {
+        return itemRepository.findById(itemId).orElseThrow(() -> new ItemNotFoundException("상품을 찾을 수 없습니다."));
+    }
 }

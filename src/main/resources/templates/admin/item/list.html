@@ -93,7 +93,7 @@
         delete: function (itemId) {
 
             if(confirm('정말 삭제하시겠습니까?')) {
-                fetch('/api/item/' + itemId, {
+                fetch('/admin/api/item/' + itemId, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8'
