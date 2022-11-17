@@ -6,6 +6,7 @@ import com.portfolio.apple.domain.account.user.UserAccount;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Getter @Setter
@@ -17,8 +18,8 @@ public class Orders extends BaseTimeEntity {
     @Id @GeneratedValue
     private Long id;
 
-    @Column(nullable = false)
-    private String SerialNumber;
+    @NotNull
+    private String serialNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private UserAccount userAccount;
@@ -29,6 +30,6 @@ public class Orders extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    private int totalPrice;
+    private int payment;
 
 }

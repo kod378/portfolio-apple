@@ -20,8 +20,7 @@ import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @CustomControllerTest
@@ -79,6 +78,22 @@ class ShoppingItemApiControllerTest {
                 .andExpect(jsonPath("$.quantity").value(updateQuantity))
                 .andExpect(jsonPath("$.shoppingItemId").value(shoppingItem.getId()))
                 .andExpect(jsonPath("$.stockQuantity").value(sampleItem.getStockQuantity()));
+    }
+
+    @DisplayName("장바구니 단일 삭제 - 정상")
+    @TestWithUserAccount
+    public void deleteShoppingItem() throws Exception {
+        // given
+        ShoppingItemRequestDTO shoppingItemRequestDTO = getShoppingItemRequestDTO(1);
+        UserAccount userAccount = getUserAccount();
+        ShoppingItem shoppingItem = ShoppingItem.createShoppingItem(userAccount, sampleItem, shoppingItemRequestDTO.getQuantity());
+        shoppingItemRepository.save(shoppingItem);
+
+        // when
+        // then
+        mockMvc.perform(delete("/api/shoppingItem/" + shoppingItem.getId()))
+                .andExpect(status().isOk())
+                .andExpect(content().string(shoppingItem.getId().toString()));
     }
 
     private ShoppingItemRequestDTO getShoppingItemRequestDTO(int quantity) {

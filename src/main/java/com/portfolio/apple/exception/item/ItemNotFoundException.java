@@ -1,8 +1,8 @@
 package com.portfolio.apple.exception.item;
 
-import com.portfolio.apple.exception.NotFoundByApiException;
+import com.portfolio.apple.exception.ApiEntityNotFoundException;
 
-public class ItemNotFoundException extends NotFoundByApiException {
+public class ItemNotFoundException extends ApiEntityNotFoundException {
     public ItemNotFoundException(String message) {
         super(message);
     }

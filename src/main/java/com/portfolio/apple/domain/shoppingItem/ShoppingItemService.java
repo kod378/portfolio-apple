@@ -2,8 +2,6 @@ package com.portfolio.apple.domain.shoppingItem;
 
 import com.portfolio.apple.domain.item.Item;
 import com.portfolio.apple.domain.account.user.UserAccount;
-import com.portfolio.apple.domain.item.ItemRepository;
-import com.portfolio.apple.exception.item.NotEnoughStockException;
 import com.portfolio.apple.exception.shoppingItem.ShoppingItemNotFoundException;
 import com.portfolio.apple.mapper.ShoppingItemMapper;
 import lombok.RequiredArgsConstructor;
@@ -33,13 +31,6 @@ public class ShoppingItemService {
         }
     }
 
-//    @Transactional
-//    public void subtractShoppingItem(UserAccount userAccount, Item item, int quantity) throws NotEnoughStockException {
-//        ShoppingItem shoppingItem = shoppingItemRepository.findByUserAccountAndItem(userAccount, item).get();
-//        shoppingItem.removeQuantity(quantity);
-//        shoppingItemRepository.save(shoppingItem);
-//    }
-
     @Transactional
     public void deleteShoppingItem(UserAccount userAccount, Item item) {
         ShoppingItem shoppingItem = shoppingItemRepository.findByUserAccountAndItem(userAccount, item).get();
@@ -47,9 +38,12 @@ public class ShoppingItemService {
         shoppingItemRepository.delete(shoppingItem);
     }
 
-    public List<ShoppingItemResponseDTO> findShoppingItems(UserAccount userAccount) {
-        List<ShoppingItem> allByUserAccount = shoppingItemRepository.findAllByUserAccount(userAccount);
-        return shoppingItemMapper.entityListToResponseDtoList(allByUserAccount);
+    public List<ShoppingItem> findListByUserAccount(UserAccount userAccount) {
+        return shoppingItemRepository.findAllByUserAccount(userAccount);
+    }
+
+    public List<ShoppingItem> findAllByUserAccount(UserAccount userAccount) {
+        return shoppingItemRepository.findAllByUserAccount(userAccount);
     }
 
     public ShoppingItem findById(Long shoppingItemId) {
@@ -59,5 +53,23 @@ public class ShoppingItemService {
     @Transactional
     public void changeQuantity(ShoppingItem shoppingItem, int quantityToChange) {
         shoppingItem.changeQuantity(quantityToChange, shoppingItem.getItem().getStockQuantity());
+    }
+
+    @Transactional
+    public void deleteByUserAccountAndIdIn(UserAccount userAccount, List<ShoppingItem> findShoppingItems) {
+        userAccount.getShoppingItems().clear();
+        shoppingItemRepository.deleteByUserAccountAndIdIn(userAccount, findShoppingItems);
+    }
+
+    @Transactional
+    public Long deleteById(Long shoppingItemId, UserAccount userAccount) {
+        ShoppingItem shoppingItem = findById(shoppingItemId);
+        userAccount.deleteShoppingItem(shoppingItem);
+        shoppingItemRepository.delete(shoppingItem);
+        return shoppingItemId;
+    }
+
+    public List<ShoppingItem> findAllByUserAccountAndIdIn(UserAccount userAccount, List<Long> checkShoppingItemIds) {
+        return shoppingItemRepository.findAllByUserAccountAndIdIn(userAccount, checkShoppingItemIds);
     }
 }

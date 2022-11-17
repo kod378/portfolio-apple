@@ -11,6 +11,7 @@ import com.portfolio.apple.domain.item.ItemSaveRequestDTO;
 import com.portfolio.apple.domain.item.ItemService;
 import com.portfolio.apple.domain.account.user.UserAccountRepository;
 import com.portfolio.apple.domain.itemFile.ItemFile;
+import com.portfolio.apple.exception.item.NotEnoughStockException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -50,7 +51,7 @@ class ShoppingItemServiceTest {
         userAccountRepository.save(user);
         String categoryName = "testCategory";
         CategorySaveRequestDTO categorySaveFormDTO = new CategorySaveRequestDTO(categoryName);
-        Category category = categoryService.saveCategory(categorySaveFormDTO);
+        categoryService.saveCategory(categorySaveFormDTO);
         ItemSaveRequestDTO itemFormDTO = new ItemSaveRequestDTO(10, 1000, "itemName", true, "content", categoryName);
         List<ItemFile> itemFiles = new ArrayList<>(
                 List.of(ItemFile.builder()
@@ -80,37 +81,74 @@ class ShoppingItemServiceTest {
         assertEquals(findShoppingItem.getUserAccount(), user);
     }
 
-    @DisplayName("장바구니 상품 수량 더하기 - 정상 입력값")
+    @DisplayName("장바구니 상품 수량 변경 - 정상 입력값")
     @Test
-    public void addQuantity() throws Exception {
+    public void changeQuantity() throws Exception {
         //given
         UserAccount user = userAccountRepository.findByEmail("test@test.com").get();
         Item item = itemService.findItemByName("itemName");
-        int quantity = 1;
-        shoppingItemService.addShoppingItem(user, item, quantity);
+        final int quantity = 1;
+        ShoppingItem shoppingItem = shoppingItemService.addShoppingItem(user, item, quantity);
 
         //when
-
-    }
-
-    @DisplayName("장바구니 상품 수량 빼기 - 정상 입력값")
-    @Test
-    void removeQuantity() throws Exception {
-        //given
-
-
-        //when
+        final int changeQuantity = 5;
+        shoppingItemService.changeQuantity(shoppingItem, changeQuantity);
 
         //then
+        ShoppingItem findShoppingItem = shoppingItemRepository.findByUserAccountAndItem(user, item).get();
+        assertEquals(findShoppingItem.getQuantity(), changeQuantity);
+        assertEquals(user.getShoppingItems().get(0).getQuantity(), changeQuantity);
     }
 
-    @DisplayName("장바구니 상품 삭제 - 정상 입력값")
+    @DisplayName("장바구니 상품 수량 변경 - 예외 최소 1보다 커야함")
+    @Test
+    void changeQuantityException1() throws Exception {
+        //given
+        UserAccount user = userAccountRepository.findByEmail("test@test.com").get();
+        Item item = itemService.findItemByName("itemName");
+        final int quantity = 5;
+        ShoppingItem shoppingItem = shoppingItemService.addShoppingItem(user, item, quantity);
+
+        //when
+        final int changeQuantity = -2;
+
+        //then
+        assertThrows(NotEnoughStockException.class, () -> shoppingItemService.changeQuantity(shoppingItem, changeQuantity),
+                "ShoppingItem quantity must be more than 1");
+    }
+
+    //TODO: 장바구니 상품 수량 변경 - 예외 입력값
+    @DisplayName("장바구니 상품 수량 변경 - 예외 재고 초과")
+    @Test
+    void changeQuantityException2() throws Exception {
+        //given
+        UserAccount user = userAccountRepository.findByEmail("test@test.com").get();
+        Item item = itemService.findItemByName("itemName");
+        final int quantity = 5;
+        ShoppingItem shoppingItem = shoppingItemService.addShoppingItem(user, item, quantity);
+
+        //when
+        final int changeQuantity = 20;
+
+        //then
+        assertThrows(NotEnoughStockException.class, () -> shoppingItemService.changeQuantity(shoppingItem, changeQuantity),
+                "Stock is not enough");
+    }
+
+    @DisplayName("장바구니 상품 개별 삭제 - 정상 입력값")
     @Test
     void deleteShoppingItem() throws Exception {
         //given
+        UserAccount user = userAccountRepository.findByEmail("test@test.com").get();
+        Item item = itemService.findItemByName("itemName");
+        final int quantity = 5;
+        ShoppingItem shoppingItem = shoppingItemService.addShoppingItem(user, item, quantity);
 
         //when
+        shoppingItemService.deleteById(shoppingItem.getId(), user);
 
         //then
+        assertFalse(user.getShoppingItems().contains(shoppingItem));
+        assertFalse(shoppingItemRepository.findById(shoppingItem.getId()).isPresent());
     }
 }

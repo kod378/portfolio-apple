@@ -26,15 +26,11 @@ import java.util.List;
 public class CreateEntity {
 
 
-    @Autowired
-    private final CategoryRepository categoryRepository;
-    @Autowired
-    private final ItemRepository itemRepository;
-    @Autowired
-    private final AdminAccountService adminAccountService;
-    @Autowired
-    private final AdminAccountRepository adminAccountRepository;
-    @Autowired final ShoppingItemRepository shoppingItemRepository;
+    @Autowired private final CategoryRepository categoryRepository;
+    @Autowired private final ItemRepository itemRepository;
+    @Autowired private final AdminAccountService adminAccountService;
+    @Autowired private final AdminAccountRepository adminAccountRepository;
+    @Autowired private final ShoppingItemRepository shoppingItemRepository;
 
     public Category saveCategory(String testCategory) {
         Category category = new Category(testCategory);
@@ -72,6 +68,12 @@ public class CreateEntity {
         Category category = saveCategory("testCategory");
         List<ItemFile> itemFileList = createItemFileList();
         return saveItem(category, itemFileList, "testItem");
+    }
+
+    public Item getSavedSampleItem(String itemName) {
+        Category category = saveCategory("testCategory");
+        List<ItemFile> itemFileList = createItemFileList();
+        return saveItem(category, itemFileList, itemName);
     }
 
     public void setUpAdminAccount() {

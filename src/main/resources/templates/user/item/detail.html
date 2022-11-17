@@ -100,7 +100,13 @@
                         </div>
                         <div>
                             <!--                        장바구니에 담기 버튼-->
-                            <button type="button" class="btn btn-primary" th:onclick="addShoppingItem([(${itemDto.id})])">장바구니에 담기</button>
+<!--                            재고량이 1보다 작으면 품절-->
+                            <div th:if="${itemDto.stockQuantity > 0}">
+                                <button type="button" class="btn btn-primary" th:onclick="addShoppingItem([(${itemDto.id})])">장바구니에 담기</button>
+                            </div>
+                            <div th:if="${itemDto.stockQuantity <= 0}">
+                                <button type="button" class="btn btn-primary" disabled>품절</button>
+                            </div>
                         </div>
                     </div>
 
@@ -157,6 +163,7 @@
             }),
             contentType: 'application/json; charset=utf-8',
         }).done(function (data) {
+            console.log(data);
             if (data >= 1) {
                 alert('장바구니에 담기 성공');
             } else {

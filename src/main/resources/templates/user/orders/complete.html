@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html::head">
+</head>
+<body class="bg-light">
+
+
+<nav th:replace="fragments.html::nav"></nav>
+
+<header th:replace="fragments.html::header"></header>
+
+<div th:replace="fragments.html::userLoginRequestMessage"></div>
+
+<main>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5 bg-dark bg-gradient">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">주문완료</h1>
+                <p class="lead text-muted">Something short and leading about the collection below—its contents, the
+                    creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
+                    entirely.</p>
+                <p>
+                    <a href="#" class="btn btn-primary my-2">Main call to action</a>
+                    <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <!--            "주문이 완료되었습니다." 문구와 주문확인 버튼-->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text">주문이 완료되었습니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a th:href="@{/orders/{orderId}(orderId=${ordersId})}"
+                                       class="btn btn-sm btn-outline-secondary">주문확인</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

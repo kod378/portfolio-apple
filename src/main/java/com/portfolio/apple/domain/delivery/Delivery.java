@@ -17,8 +17,7 @@ public class Delivery extends BaseTimeEntity {
     @Id @GeneratedValue
     private Long id;
 
-    @Column(nullable = false)
-    private String SerialNumber;
+    private String serialNumber;
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus deliveryStatus;

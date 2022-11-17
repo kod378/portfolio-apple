@@ -33,6 +33,7 @@ logging:
     root: debug
     org.hibernate.sql: debug
 
+
 server:
   servlet:
     encoding:

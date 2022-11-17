@@ -33,55 +33,70 @@
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                            <tr>
-                                <th>상품이미지</th>
-                                <th>상품명</th>
-                                <th>가격</th>
-                                <th>수량</th>
-                                <th>합계</th>
-                                <th>삭제</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="shoppingItemResponseDTO : ${shoppingItemResponseDTOList}">
-                                <td>
-                                    <img th:src="${'/uploadImage/s_' + shoppingItemResponseDTO.getFileName}" width="100px"
-                                         height="100px">
-                                </td>
-                                <td th:text="${shoppingItemResponseDTO.itemName}"></td>
-                                <td th:text="${shoppingItemResponseDTO.price}"></td>
-                                <td>
-                                    <div class="row">
-                                        <div class="col d-flex">
-                                            <a href="javascript:;" class="text-decoration-none"
-                                               th:onclick="changeOrderQuantityWithId(-1, [(${shoppingItemResponseDTO.id})])">
-                                                <div th:replace="fragments.html::minusIcon"></div>
-                                            </a>
+                        <form method="get" action="/shoppingItem/orderConfirm" id="shoppingItemsFrom">
+                            <table class="table table-sm">
+                                <thead>
+                                <tr>
+                                    <th><input type="checkbox" onchange="checkAll(this)" id="check-all">전체선택/해제</th>
+                                    <th>상품이미지</th>
+                                    <th>상품명</th>
+                                    <th>가격</th>
+                                    <th>수량</th>
+                                    <th>합계</th>
+                                    <th>삭제</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="shoppingItemResponseDTO : ${shoppingItemResponseDTOList}">
+                                    <td>
+                                        <input type="checkbox" name="checkShoppingItems"
+                                               th:value="${shoppingItemResponseDTO.id}" onchange="checkPayPrice(this)">
+                                    </td>
+                                    <td>
+                                        <img th:src="${'/uploadImage/s_' + shoppingItemResponseDTO.getFileName}"
+                                             width="100px"
+                                             height="100px">
+                                    </td>
+                                    <td th:text="${shoppingItemResponseDTO.itemName}"></td>
+                                    <td th:text="${shoppingItemResponseDTO.price}"></td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col d-flex">
+                                                <a href="javascript:;" class="text-decoration-none"
+                                                   th:onclick="changeOrderQuantityWithId(-1, [(${shoppingItemResponseDTO.id})])">
+                                                    <div th:replace="fragments.html::minusIcon"></div>
+                                                </a>
 
-                                            <input type="number" th:id="${'order-quantity-' + shoppingItemResponseDTO.id}"
-                                                   class="form-control w-50" th:value="${shoppingItemResponseDTO.quantity}"
-                                                   th:onchange="changeOrderQuantityWithId(0, [(${shoppingItemResponseDTO.id})])">
-                                            <input type="hidden" th:id="${'order-price-' + shoppingItemResponseDTO.id}"
-                                                   th:value="${shoppingItemResponseDTO.price}">
-                                            <input type="hidden" th:id="${'order-stock-quantity-' + shoppingItemResponseDTO.id}"
-                                                   th:value="${shoppingItemResponseDTO.stockQuantity}">
+                                                <input type="number"
+                                                       th:id="${'order-quantity-' + shoppingItemResponseDTO.id}"
+                                                       class="form-control w-50"
+                                                       th:value="${shoppingItemResponseDTO.quantity}"
+                                                       th:onchange="changeOrderQuantityWithId(0, [(${shoppingItemResponseDTO.id})])">
+                                                <input type="hidden"
+                                                       th:id="${'order-price-' + shoppingItemResponseDTO.id}"
+                                                       th:value="${shoppingItemResponseDTO.price}">
+                                                <input type="hidden"
+                                                       th:id="${'order-stock-quantity-' + shoppingItemResponseDTO.id}"
+                                                       th:value="${shoppingItemResponseDTO.stockQuantity}">
 
-                                            <a href=" javascript:;" class="text-decoration-none"
-                                               th:onclick="changeOrderQuantityWithId(1, [(${shoppingItemResponseDTO.id})])">
-                                                <div th:replace="fragments.html::plusIcon"></div>
-                                            </a>
+                                                <a href=" javascript:;" class="text-decoration-none"
+                                                   th:onclick="changeOrderQuantityWithId(1, [(${shoppingItemResponseDTO.id})])">
+                                                    <div th:replace="fragments.html::plusIcon"></div>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td th:text="${shoppingItemResponseDTO.totalPrice}" name="total-price" th:id="${'total-price-' + shoppingItemResponseDTO.id}"></td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-secondary">삭제</button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                                    </td>
+                                    <td th:text="${shoppingItemResponseDTO.totalPrice}" name="total-price"
+                                        th:id="${'total-price-' + shoppingItemResponseDTO.id}"></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-secondary"
+                                                th:onclick="deleteShoppingItem([(${shoppingItemResponseDTO.id})])">삭제
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -109,6 +124,84 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 주문하기 버튼-->
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                            <tr>
+                                <th>주문하기</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td th:if="${shoppingItemResponseDTOList != null and !shoppingItemResponseDTOList.isEmpty()}">
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="confirmOrder();">주문하기</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 품절 목록-->
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <h6><strong>품절</strong></h6>
+                        <table class="table table-sm">
+                            <thead>
+                            <tr>
+                                <th>상품이미지</th>
+                                <th>상품명</th>
+                                <th>가격</th>
+                                <th>수량</th>
+                                <th>합계</th>
+                                <th>삭제</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="soldOutDTO : ${soldOutList}">
+                                <td>
+                                    <img th:src="${'/uploadImage/s_' + soldOutDTO.getFileName}"
+                                         width="100px"
+                                         height="100px">
+                                </td>
+                                <td th:text="${soldOutDTO.itemName}"></td>
+                                <td th:text="${soldOutDTO.price}"></td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col d-flex">
+                                            <a href="javascript:;" class="text-decoration-none">
+                                                <div th:replace="fragments.html::minusIcon"></div>
+                                            </a>
+
+                                            <input type="number" class="form-control w-50" disabled
+                                                   th:value="${soldOutDTO.quantity}">
+
+                                            <a href=" javascript:;" class="text-decoration-none">
+                                                <div th:replace="fragments.html::plusIcon"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td th:text="${soldOutDTO.totalPrice}" name="total-price"
+                                    th:id="${'total-price-' + soldOutDTO.id}"></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary"
+                                            th:onclick="deleteShoppingItem([(${soldOutDTO.id})])">삭제
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </main>
@@ -139,14 +232,13 @@
         }
 
         if (quantity < 1) {
-            quantity = 1;
-        }else if (quantity > stockQuantity.val()) {
+            quantity = orderQuantity.val();
+        } else if (quantity > stockQuantity.val()) {
             quantity = stockQuantity.val();
             changeQuantityApi();
             quantity = stockQuantity.val(); //api 호출 후 stockQuantity 값이 변경되었을 수 있으므로 다시 할당
             alert('최대 주문 수량은 ' + stockQuantity.val() + '개 입니다.');
-        }
-        else{
+        } else {
             changeQuantityApi();
         }
         orderQuantity.val(quantity);
@@ -154,17 +246,81 @@
         changePayPrice();
     }
 
+    let allNotChecked = true;
     function changePayPrice() {
         let allTotalPrice = 0;
         let deliveryFee = $('#delivery-fee');
         let finalPayPrice = 0;
 
-        $('td[name="total-price"]').each(function () {
-            allTotalPrice += parseInt($(this).text());
-        });
+
+        if (allNotChecked) {
+            $('td[name="total-price"]').each(function () {
+                allTotalPrice += parseInt($(this).text());
+            });
+        } else {
+            $('input[name="checkShoppingItems"]:checked').each(function () {
+                allTotalPrice += parseInt($('#total-price-'+this.value).text());
+            });
+        }
+
         finalPayPrice = allTotalPrice + parseInt(deliveryFee.text());
         $('#all-total-price').text(allTotalPrice);
         $('#final-pay-price').text(finalPayPrice);
+    }
+
+    function checkPayPrice(isChecked) {
+        checkALL();
+        changePayPrice();
+    }
+
+    function checkALL() {
+        //length of input name checkShoppingItems
+        let length = $('input[name="checkShoppingItems"]').length;
+        //length of input name checkShoppingItems that is checked
+        let checkedLength = $('input[name="checkShoppingItems"]:checked').length;
+
+        if(checkedLength === 0) {
+            allNotChecked = true;
+            $('#check-all').prop('checked', false);
+        } else if (length === checkedLength) {
+            allNotChecked = false;
+            $('#check-all').prop('checked', true);
+        } else {
+            allNotChecked = false;
+            $('#check-all').prop('checked', false);
+        }
+    }
+
+    function checkAll(isAllChecked) {
+        if(isAllChecked.checked === true) {
+            $('input[name="checkShoppingItems"]').each(function () {
+                $(this).prop('checked', true);
+            });
+            allNotChecked = false;
+        } else {
+            $('input[name="checkShoppingItems"]').each(function () {
+                $(this).prop('checked', false);
+            });
+            allNotChecked = true;
+        }
+    }
+
+    function deleteShoppingItem(id) {
+        $.ajax({
+            url: '/api/shoppingItem/' + id,
+            type: 'DELETE',
+            success: function (data) {
+                console.log(data);
+                location.reload();
+            },
+            error: function (error) {
+                alert(error.message);
+            }
+        });
+    }
+
+    function confirmOrder() {
+        $('#shoppingItemsFrom').submit();
     }
 </script>
 </body>

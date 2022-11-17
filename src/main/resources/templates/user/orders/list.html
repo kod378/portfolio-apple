@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html::head">
+</head>
+<body class="bg-light">
+
+<nav th:replace="fragments.html::nav"></nav>
+
+<header th:replace="fragments.html::header"></header>
+
+<div th:replace="fragments.html::userLoginRequestMessage"></div>
+
+<main>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5 bg-dark bg-gradient">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">주문 확인</h1>
+                <p class="lead text-muted">Something short and leading about the collection below—its contents, the
+                    creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
+                    entirely.</p>
+                <p>
+                    <a href="#" class="btn btn-primary my-2">Main call to action</a>
+                    <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div th:if="${ordersResponseDTOList == null or ordersResponseDTOList.isEmpty()}">
+                <div class="alert alert-warning" role="alert">
+                    주문 내역이 없습니다.
+                </div>
+            </div>
+
+
+            <div th:if="${ordersResponseDTOList != null and !ordersResponseDTOList.isEmpty()}">
+                <div class="row" th:each="ordersResponseDTO : ${ordersResponseDTOList}">
+                    <!--            주문번호와 주문일자를 표시하고, 주문상품들을 표기, 배송상태 표기-->
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4">
+                                <h3>주문번호: <span th:text="${ordersResponseDTO.orderSerialNumber}"></span></h3>
+                            </div>
+                            <div class="col-4">
+                                <h3>주문일자: <span
+                                        th:text="${#temporals.format(ordersResponseDTO.orderDateTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                                </h3>
+                            </div>
+                            <div class="col-4">
+                                <h3>배송상태: <span th:text="${ordersResponseDTO.deliveryStatus}"></span></h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card mb-2 shadow-sm">
+                                <div class="d-flex row">
+                                    <div class="card-body col-3"
+                                         th:each="orderedItemDTO : ${ordersResponseDTO.getOrderedItemDTOList}">
+                                        <p class="card-text">주문상품: <span th:text="${orderedItemDTO.itemName}"></span></p>
+                                        <p class="card-text">주문수량: <span th:text="${orderedItemDTO.quantity}"></span></p>
+                                        <p class="card-text">주문가격: <span th:text="${orderedItemDTO.price}"></span></p>
+                                        <img src="" th:src="${'/uploadImage/s_' + orderedItemDTO.fileName}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

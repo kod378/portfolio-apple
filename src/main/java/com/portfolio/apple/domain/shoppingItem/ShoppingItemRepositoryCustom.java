@@ -7,4 +7,6 @@ import java.util.List;
 public interface ShoppingItemRepositoryCustom {
 
     List<ShoppingItem> findAllByUserAccount(UserAccount userAccount);
+
+    List<ShoppingItem> findAllByUserAccountAndIdIn(UserAccount userAccount, List<Long> checkedIdList);
 }

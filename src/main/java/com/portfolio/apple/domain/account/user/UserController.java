@@ -33,18 +33,18 @@ public class UserController {
         return "index";
     }
 
-    //TODO: 네이버 로그인을 새 창으로 수정하면 이 메소드는 필요 없을 수 있음.
+    //네이버 로그인을 새 창으로 수정하면 이 메소드는 필요 없을 수 있음.
     @GetMapping("/redirectReferer")
     public String redirectReferer(HttpServletRequest request, RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute("userLoginRequestMessage", "로그인이 필요한 서비스입니다.");
         Optional<String> referer = Optional.ofNullable(request.getHeader("Referer"));
-        if (request.getHeader("Accept").contains("json")) { //api 요청 시 비로그인 상태이면
+        if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) { //api 요청 시 비로그인 상태이면
             return "redirect:/ApiUnAuthorized";
         }
         return "redirect:" + referer.orElse("/");
     }
 
-    //TODO: 네이버 로그인을 새 창으로 수정하면 이 메소드는 필요 없을 수 있음.
+    //네이버 로그인을 새 창으로 수정하면 이 메소드는 필요 없을 수 있음.
     @GetMapping("/ApiUnAuthorized")
     @ResponseBody
     public ResponseEntity<String> ApiUnAuthorized() {
