@@ -53,14 +53,14 @@
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
                                     <li class="page-item" th:classappend="${itemDtoPage.hasPrevious() == false} ? 'disabled'">
-                                        <a class="page-link" th:href="@{/admin/item/list(page=${itemDtoPage.getNumber() - 1})}" tabindex="-1">Previous</a>
+                                        <a class="page-link" th:href="@{/item/list(page=${itemDtoPage.getNumber() - 1})}" tabindex="-1">Previous</a>
                                     </li>
                                     <li class="page-item" th:classappend="${i == itemDtoPage.getNumber()} ? 'active'"
                                         th:each="i : ${#numbers.sequence(pageStart, pageEnd)}">
-                                        <a class="page-link" th:href="@{/admin/item/list(page=${i})}" th:text="${i+1}"></a>
+                                        <a class="page-link" th:href="@{/item/list(page=${i})}" th:text="${i+1}"></a>
                                     </li>
                                     <li class="page-item" th:classappend="${itemDtoPage.hasNext() == false} ? 'disabled'">
-                                        <a class="page-link" th:href="@{/admin/item/list(page=${itemDtoPage.getNumber() + 1})}">Next</a>
+                                        <a class="page-link" th:href="@{/item/list(page=${itemDtoPage.getNumber() + 1})}">Next</a>
                                     </li>
                                 </ul>
                             </nav>

@@ -29,11 +29,10 @@ public class ItemAdminController {
     private final CategoryService categoryService;
 
     @GetMapping("/list")
-    public String itemList(Model model,
-                           @PageableDefault Pageable pageable) {
+    public String itemList(Model model, @PageableDefault Pageable pageable) {
         Page<ItemResponseDTO> pageWithResponseDto = itemService.findPageWithResponseDto(pageable);
         int pageStart = (pageable.getPageNumber() / 10) * 10;
-        int pageEnd = Math.min(pageStart + 9, pageWithResponseDto.getTotalPages());
+        int pageEnd = Math.min(pageStart + 9, pageWithResponseDto.getTotalPages() - 1);
 
         model.addAttribute("categoryDtoList", categoryService.findAllDto());
         model.addAttribute("itemDtoPage", pageWithResponseDto);

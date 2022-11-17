@@ -21,7 +21,7 @@ public class ItemUserController {
     public String itemUserList(Model model, @PageableDefault(size = 9) Pageable pageable) {
         Page<ItemResponseDTO> pageWithResponseDto = itemService.findPageWithResponseDto(pageable);
         int pageStart = (pageable.getPageNumber() / 10) * 10;
-        int pageEnd = Math.min(pageStart + 9, pageWithResponseDto.getTotalPages());
+        int pageEnd = Math.min(pageStart + 9, pageWithResponseDto.getTotalPages() - 1);
 
         model.addAttribute("categoryDtoList", categoryService.findAllDto());
         model.addAttribute("itemDtoPage", pageWithResponseDto);
