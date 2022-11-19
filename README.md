@@ -56,10 +56,10 @@
                 .and().build();
     }
 ```
-기본적으로 SpringSecurity를 활용해서 구현. 
-관리자는 formLogin을 활용해서 로그인/회원가입 구현. 
-일반유저는 OAuth2.0을 활용해서 로그인처리(네이버 로그인 연동). 
-자세한 부분은 /domain/account/ 패키지위치 참조
+- 기본적으로 SpringSecurity를 활용해서 구현. 
+- 관리자는 formLogin을 활용해서 로그인/회원가입 구현. 
+- 일반유저는 OAuth2.0을 활용해서 로그인처리(네이버 로그인 연동). 
+- 자세한 부분은 /domain/account/ 패키지위치 참조
 
 ## 2. 이미지 업로드/불러오기
 ```java
@@ -76,10 +76,10 @@
                 .addResourceLocations("file:///E:/upload/");
     }
 ```
-MultipartFile 인터페이스를 활용해서 이미지 파일 요청을 받아서 처리
-프로젝트 외부에 저장한 파일을 불러오기 위해서 핸들러 추가
-자세한 부분은 ItemFileService.java 참조
-MultipartFile 관련은 블로그를 참조해도 좋을 듯 합니다.
+- MultipartFile 인터페이스를 활용해서 이미지 파일 요청을 받아서 처리
+- 프로젝트 외부에 저장한 파일을 불러오기 위해서 핸들러 추가
+- 자세한 부분은 ItemFileService.java 참조
+- MultipartFile 관련은 블로그를 참조해도 좋을 듯 합니다.
 
 ## 3. 주문
 ```java
@@ -119,9 +119,9 @@ MultipartFile 관련은 블로그를 참조해도 좋을 듯 합니다.
         return orders;
     }
 ```
-주문하기 기능이 Orders, Delivery, OrderedItem 3가지 엔티티를 한번에 저장하는 기능이라서 한 트랜잭션 안에서 동작하도록 OrderService에서 각 서비스를 호출하도록 구현
+- 주문하기 기능이 Orders, Delivery, OrderedItem 3가지 엔티티를 한번에 저장하는 기능이라서 한 트랜잭션 안에서 동작하도록 OrderService에서 각 서비스를 호출하도록 구현
 
 # 기타
-테스트 코드 확인
+- 테스트 코드 확인
 
 
