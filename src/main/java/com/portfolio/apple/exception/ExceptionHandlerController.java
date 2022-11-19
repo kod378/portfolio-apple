@@ -21,31 +21,28 @@ import javax.servlet.http.HttpServletRequest;
 public class ExceptionHandlerController {
 
     @ExceptionHandler(CategoryDuplicateException.class)
-    public String categoryDuplicateException(CategoryDuplicateException e, RedirectAttributes redirectAttributes,
-                                             @CurrentUser UserAccount userAccount, HttpServletRequest request) {
-        logError(userAccount, request, e);
+    public String categoryDuplicateException(CategoryDuplicateException e, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+        logError(request, e);
         redirectAttributes.addFlashAttribute("message", e.getMessage());
         return "redirect:/admin/category/list";
     }
 
     @ExceptionHandler(ApiEntityNotFoundException.class)
-    public ResponseEntity<String> categoryNotFoundException(RuntimeException e , @CurrentUser UserAccount userAccount, HttpServletRequest request) {
-        logError(userAccount, request, e);
+    public ResponseEntity<String> categoryNotFoundException(RuntimeException e, HttpServletRequest request) {
+        logError(request, e);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 
     @ExceptionHandler({UploadFileNotValidException.class, UploadFileException.class})
-    public String uploadFileNotValidException(UploadFileNotValidException e, RedirectAttributes redirectAttributes,
-                                              @CurrentUser UserAccount userAccount, HttpServletRequest request) {
-        logError(userAccount, request, e);
+    public String uploadFileNotValidException(UploadFileNotValidException e, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+        logError(request, e);
         redirectAttributes.addFlashAttribute("message", e.getMessage());
         return "redirect:/admin/item/save";
     }
 
     @ExceptionHandler(MissingServletRequestPartException.class)
-    public String handleMissingServletRequestPartException(MissingServletRequestPartException e, RedirectAttributes redirectAttributes,
-                                                           @CurrentUser UserAccount userAccount, HttpServletRequest request) {
-        logError(userAccount, request, e);
+    public String handleMissingServletRequestPartException(MissingServletRequestPartException e, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+        logError(request, e);
         redirectAttributes.addFlashAttribute("message", "파일을 선택해주세요.");
         return "redirect:/admin/item/save";
     }
@@ -62,6 +59,11 @@ public class ExceptionHandlerController {
         } else {
             log.error("[BAD REQUEST] url : {}, message : {}", request.getRequestURL(), e.getMessage());
         }
+        log.error("Exception", e);
+    }
+
+    private void logError(HttpServletRequest request, Exception e) {
+        log.error("[BAD REQUEST] url : {}, message : {}", request.getRequestURL(), e.getMessage());
         log.error("Exception", e);
     }
 }

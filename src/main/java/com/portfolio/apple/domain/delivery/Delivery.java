@@ -8,7 +8,6 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,4 +24,11 @@ public class Delivery extends BaseTimeEntity {
     @Embedded
     private Address address;
 
+    public void updateDeliverySerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public void updateDeliveryStatus(DeliveryStatus deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
+    }
 }

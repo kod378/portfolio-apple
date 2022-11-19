@@ -11,6 +11,7 @@ import java.util.List;
 @Data
 public class OrdersResponseDTO {
 
+    private Long id;
     private String orderSerialNumber;
     private int payment;
     private LocalDateTime orderDateTime;
@@ -19,4 +20,5 @@ public class OrdersResponseDTO {
     private DeliveryStatus deliveryStatus;
     private Address address;
     private List<OrderedItemResponseDTO> orderedItemDTOList;
+
 }

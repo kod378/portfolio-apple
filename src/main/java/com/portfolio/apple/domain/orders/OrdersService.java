@@ -2,6 +2,7 @@ package com.portfolio.apple.domain.orders;
 
 import com.portfolio.apple.domain.account.user.UserAccount;
 import com.portfolio.apple.domain.delivery.Delivery;
+import com.portfolio.apple.domain.delivery.DeliveryStatus;
 import com.portfolio.apple.exception.EntityByIdNotFoundException;
 import lombok.RequiredArgsConstructor;
 import net.bytebuddy.utility.RandomString;
@@ -40,7 +41,30 @@ public class OrdersService {
         return ordersRepository.findOrdersWithDeliveryByIdAndAccount(ordersId, userAccount).orElseThrow(() -> new EntityByIdNotFoundException("주문을 찾을 수 없습니다."));
     }
 
-    public List<Orders> findOrdersByUserAccount(UserAccount userAccount) {
+    public List<Orders> findOrdersWithDeliveryByUserAccount(UserAccount userAccount) {
         return ordersRepository.findOrdersWithDeliveryByUserAccount(userAccount);
+    }
+
+    public List<Orders> findAll() {
+        return ordersRepository.findAll();
+    }
+
+    public Orders findWithDeliveryById(Long ordersId) {
+        return ordersRepository.findWithDeliveryById(ordersId).orElseThrow(() -> new EntityByIdNotFoundException("주문을 찾을 수 없습니다."));
+    }
+
+    @Transactional
+    public void updateOrdersDeliverySerialNumberAndStatus(Orders orders, String deliverySerialNumber) {
+        Delivery delivery = orders.getDelivery();
+        delivery.updateDeliverySerialNumber(deliverySerialNumber);
+        delivery.updateDeliveryStatus(DeliveryStatus.DELIVERING);
+        orders.updateOrderStatus(OrderStatus.DELIVERY);
+    }
+
+    @Transactional
+    public void cancelOrders(Orders orders) {
+        Delivery delivery = orders.getDelivery();
+        orders.updateOrderStatus(OrderStatus.CANCELED);
+        delivery.updateDeliveryStatus(DeliveryStatus.CANCELED);
     }
 }

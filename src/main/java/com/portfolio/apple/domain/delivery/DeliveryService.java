@@ -13,9 +13,9 @@ public class DeliveryService {
     private final DeliveryRepository deliveryRepository;
 
     @Transactional
-    public Delivery savePrePareDelivery(OrdersRequestDTO ordersRequestDTO) {
+    public Delivery savePrePareDelivery(Address address) {
         Delivery delivery = Delivery.builder()
-                .address(new Address(ordersRequestDTO.getAddress(), ordersRequestDTO.getDetailAddress(), ordersRequestDTO.getPostcode(), ordersRequestDTO.getPhoneNumber(),ordersRequestDTO.getAddressee()))
+                .address(address)
                 .deliveryStatus(DeliveryStatus.PREPARE)
                 .build();
         return deliveryRepository.save(delivery);

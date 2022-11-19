@@ -37,7 +37,7 @@ public class OrdersUserController {
 
     @GetMapping("/orders")
     public String orders(@CurrentUser UserAccount userAccount, Model model) {
-        List<Orders> orders = ordersService.findOrdersByUserAccount(userAccount);
+        List<Orders> orders = ordersService.findOrdersWithDeliveryByUserAccount(userAccount);
         if (orders.isEmpty()) {
             model.addAttribute("ordersResponseDTOList", Collections.emptyList());
             return "user/orders/list";

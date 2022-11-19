@@ -5,5 +5,5 @@ import lombok.Getter;
 @Getter
 public enum DeliveryStatus {
 
-    PREPARE, DELIVERY, ARRIVE
+    PREPARE, DELIVERING, ARRIVE, CANCELED
 }

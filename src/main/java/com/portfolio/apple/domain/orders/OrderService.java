@@ -1,5 +1,6 @@
 package com.portfolio.apple.domain.orders;
 
+import com.portfolio.apple.domain.Address;
 import com.portfolio.apple.domain.account.user.UserAccount;
 import com.portfolio.apple.domain.delivery.Delivery;
 import com.portfolio.apple.domain.delivery.DeliveryFee;
@@ -25,7 +26,6 @@ public class OrderService {
 
     @Transactional
     public Orders order(UserAccount userAccount, OrdersRequestDTO ordersRequestDTO) throws Exception{
-        System.out.println("ordersRequestDTO = " + ordersRequestDTO.getCheckShoppingItemIds());
         List<ShoppingItem> findShoppingItems = shoppingItemService.findAllByUserAccountAndIdIn(userAccount, ordersRequestDTO.getCheckShoppingItemIds());
         if (findShoppingItems.isEmpty()) {
             throw new NoShoppingItemException("장바구니에 담긴 상품이 없습니다.");
@@ -34,12 +34,17 @@ public class OrderService {
         checkStock(findShoppingItems);
         final int payment = findShoppingItems.stream().mapToInt(shoppingItem -> shoppingItem.getItem().getPrice() * shoppingItem.getQuantity()).sum()
                 + DeliveryFee.DELIVERY_FEE;
-        Delivery delivery = deliveryService.savePrePareDelivery(ordersRequestDTO);
+        Address address = getAddressFromDTO(ordersRequestDTO);
+        Delivery delivery = deliveryService.savePrePareDelivery(address);
         Orders orders = ordersService.saveOrders(userAccount, delivery, payment);
         checkStock(findShoppingItems);
         orderedItemService.saveAllAndChangeStockOfItem(findShoppingItems, orders);
         shoppingItemService.deleteByUserAccountAndIdIn(userAccount, findShoppingItems);
         return orders;
+    }
+
+    private Address getAddressFromDTO(OrdersRequestDTO ordersRequestDTO) {
+        return new Address(ordersRequestDTO.getAddress(), ordersRequestDTO.getDetailAddress(), ordersRequestDTO.getPostcode(), ordersRequestDTO.getPhoneNumber(), ordersRequestDTO.getAddressee());
     }
 
     private void checkStock(List<ShoppingItem> allByUserAccount) {

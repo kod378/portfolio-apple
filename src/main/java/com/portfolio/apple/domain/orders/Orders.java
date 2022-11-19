@@ -32,4 +32,7 @@ public class Orders extends BaseTimeEntity {
 
     private int payment;
 
+    public void updateOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
 }

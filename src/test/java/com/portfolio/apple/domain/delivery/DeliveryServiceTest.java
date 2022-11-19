@@ -29,7 +29,8 @@ class DeliveryServiceTest {
         //given
         OrdersRequestDTO ordersRequestDTO = new OrdersRequestDTO("testName", "010-0000-0000", "testAddress", "testDetailAddress", 12345, null);
         //when
-        Delivery delivery = deliveryService.savePrePareDelivery(ordersRequestDTO);
+        Address address = new Address(ordersRequestDTO.getAddress(), ordersRequestDTO.getDetailAddress(), ordersRequestDTO.getPostcode(), ordersRequestDTO.getPhoneNumber(), ordersRequestDTO.getAddressee());
+        Delivery delivery = deliveryService.savePrePareDelivery(address);
         //then
         Delivery findDelivery = deliveryRepository.findById(delivery.getId()).orElseThrow(() -> new IllegalArgumentException("배송지가 존재하지 않습니다."));
         assertEquals(findDelivery.getAddress().getAddressee(), ordersRequestDTO.getAddressee());

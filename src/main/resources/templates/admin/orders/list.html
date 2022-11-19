@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/adminFragments.html::head"></head>
+<body class="bg-light">
+
+<header th:replace="admin/adminFragments.html::header"></header>
+
+<main>
+
+    <div th:replace="admin/adminFragments.html::message"></div>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-3">
+
+            </div>
+            <div class="col-9">
+                <!-- 상품 목록 나열 -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <h3>주문 목록</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>주문번호</th>
+                                <th>주문일자</th>
+                                <th>주문상태</th>
+                                <th>주문금액</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="ordersResponseDTO : ${ordersResponseDTOList}" th:onclick="goDetail([(${ordersResponseDTO.id})])">
+                                <td th:text="${ordersResponseDTO.orderSerialNumber}"></td>
+                                <td th:text="${#temporals.format(ordersResponseDTO.orderDateTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                <td th:text="${ordersResponseDTO.orderStatus.status}"></td>
+                                <td th:text="${ordersResponseDTO.payment}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- 페이징 -->
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<script>
+    const goDetail = (ordersId) => {
+        location.href = '/admin/orders/detail/' + ordersId;
+    }
+</script>
+</body>
+</html>

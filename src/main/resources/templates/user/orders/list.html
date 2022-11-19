@@ -40,16 +40,19 @@
                     <!--            주문번호와 주문일자를 표시하고, 주문상품들을 표기, 배송상태 표기-->
                     <div class="col-12">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-3">
                                 <h3>주문번호: <span th:text="${ordersResponseDTO.orderSerialNumber}"></span></h3>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <h3>주문일자: <span
                                         th:text="${#temporals.format(ordersResponseDTO.orderDateTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
                                 </h3>
                             </div>
-                            <div class="col-4">
-                                <h3>배송상태: <span th:text="${ordersResponseDTO.deliveryStatus}"></span></h3>
+                            <div class="col-3">
+                                <h3>주문상태: <span th:text="${ordersResponseDTO.orderStatus.status}"></span></h3>
+                            </div>
+                            <div class="col-3">
+                               <a th:href="@{/orders/{orderId}(orderId=${ordersResponseDTO.id})}"><h3>배송확인</h3></a>
                             </div>
                         </div>
                         <div class="row">

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/adminFragments.html::head"></head>
+<body class="bg-light">
+
+<header th:replace="admin/adminFragments.html::header"></header>
+
+<main>
+
+    <div th:replace="admin/adminFragments.html::message"></div>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-3">
+
+            </div>
+            <div class="col-9">
+                <!-- 상품 목록 나열 -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <h3>주문 상세</h3>
+                            <div>
+                                <button class="btn btn-primary" th:onclick="cancelOrders([(${ordersResponseDTO.id})])">주문취소</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>주문번호</th>
+                                <th>주문일자</th>
+                                <th>주문상태</th>
+                                <th>주문금액</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td th:text="${ordersResponseDTO.orderSerialNumber}"></td>
+                                <td th:text="${#temporals.format(ordersResponseDTO.orderDateTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                <td th:text="${ordersResponseDTO.orderStatus.status}"></td>
+                                <td th:text="${ordersResponseDTO.payment}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>받는사람</th>
+                                <th>연락처</th>
+                                <th>배송지</th>
+                                <th>배송상태</th>
+                                <td>배송번호</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td th:text="${ordersResponseDTO.address.addressee}"></td>
+                                <td th:text="${ordersResponseDTO.address.phoneNumber}"></td>
+                                <td th:text="${ordersResponseDTO.address.address + ' ' + ordersResponseDTO.address.detailAddress}"></td>
+                                <td th:text="${ordersResponseDTO.deliveryStatus}"></td>
+                                <td th:text="${ordersResponseDTO.deliverySerialNumber}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+<!--                운송장 번호 입력-->
+                <div class="row">
+                    <div class="col-12">
+                        <h4>송장 번호 입력</h4>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" placeholder="송장 번호" id="delivery-serial-number">
+                        <input type="text" placeholder="송장 번호 확인" id="delivery-serial-number-confirm">
+                        <button th:onclick="updateDeliverySerialNumber([(${ordersResponseDTO.id})])">입력완료</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+<script th:inline="javascript">
+    const updateDeliverySerialNumber = (ordersId) => {
+        const deliverySerialNumber = document.getElementById('delivery-serial-number').value;
+        const deliverySerialNumberConfirm = document.getElementById('delivery-serial-number-confirm').value;
+        if (deliverySerialNumber !== deliverySerialNumberConfirm) {
+            alert('송장 번호가 일치하지 않습니다.');
+            return;
+        }
+        const url = '/admin/api/orders/' + ordersId + '/deliverySerialNumber';
+        const data = {
+            deliverySerialNumber: deliverySerialNumber
+        };
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response => {
+            if (response.ok) {
+                alert('송장 번호가 입력되었습니다.');
+                location.reload();
+            } else {
+                alert('송장 번호 입력에 실패하였습니다.');
+            }
+        });
+    }
+
+    const cancelOrders = (orderId) => {
+        const deliveryStatus = /*[[${ordersResponseDTO.deliveryStatus}]]*/ 'PREPARE, DELIVERING, ARRIVE, CANCELED';
+        if (confirm('주문을 취소하시겠습니까?')) {
+            //관리자는 배송상태에 상관없이 주문취소가능하게 처리
+            if (deliveryStatus === 'CANCELED') {
+                alert('이미 취소된 주문입니다.');
+                return;
+            }
+            const url = '/admin/api/orders/cancel/' + orderId;
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    alert('주문이 취소되었습니다.');
+                    location.reload();
+                } else {
+                    alert('주문 취소에 실패하였습니다.');
+                }
+            });
+        }
+    }
+</script>
+</html>

@@ -117,7 +117,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <input type="text" id="addressee" class="form-control"
+                                                <input type="text" id="addressee" class="form-control" name="addressee"
                                                        placeholder="이름을 입력해주세요" required>
                                             </div>
                                         </div>
@@ -130,7 +130,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <input type="text" id="phoneNumber" class="form-control"
+                                                <input type="text" id="phoneNumber" class="form-control" name="phoneNumber"
                                                        placeholder="연락처를 입력해주세요" required>
                                             </div>
                                         </div>
@@ -139,13 +139,13 @@
                             </div>
                         </div>
                         <div>
-                            <input type="text" id="postcode" placeholder="우편번호" readonly required>
+                            <input type="text" id="postcode" name="postcode"  placeholder="우편번호" readonly required>
                             <button type="button" onclick="execDaumPostcode()">우편번호 찾기</button>
                             <br>
-                            <input type="text" id="address" placeholder="주소" size="45" readonly required>
+                            <input type="text" id="address" name="address" placeholder="주소" size="45" readonly required>
                             <br>
-                            <input type="text" id="detailAddress" placeholder="상세주소" required>
-                            <input type="text" id="extraAddress" placeholder="참고항목" readonly>
+                            <input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소" required>
+                            <input type="text" id="extraAddress" name="extraAddress" placeholder="참고항목" readonly>
                         </div>
 
                     </div>

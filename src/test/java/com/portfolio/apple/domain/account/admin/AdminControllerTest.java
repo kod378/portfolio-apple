@@ -2,6 +2,7 @@ package com.portfolio.apple.domain.account.admin;
 
 import com.portfolio.apple.CreateEntity;
 import com.portfolio.apple.CustomControllerTest;
+import com.portfolio.apple.TestWithAdminAccount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,8 +47,7 @@ class AdminControllerTest {
     }
 
     @DisplayName("관리자 인덱스 화면 - 인증")
-    @Test
-    @WithUserDetails(value = "admin", setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @TestWithAdminAccount
     public void indexWithAuthentication() throws Exception {
         mockMvc.perform(get("/admin"))
                 .andExpect(status().isOk())

@@ -33,13 +33,34 @@
                 <div class="col-12">
                     <div class="row">
                         <div class="col-4">
-                            <h3>주문번호: <span th:text="${ordersResponseDTO.orderSerialNumber}"></span></h3>
+                            <h5>주문번호: <span th:text="${ordersResponseDTO.orderSerialNumber}"></span></h5>
                         </div>
                         <div class="col-4">
-                            <h3>주문일자: <span th:text="${#temporals.format(ordersResponseDTO.orderDateTime, 'yyyy-MM-dd HH:mm:ss')}"></span></h3>
+                            <h5>주문일자: <span th:text="${#temporals.format(ordersResponseDTO.orderDateTime, 'yyyy-MM-dd HH:mm:ss')}"></span></h5>
                         </div>
                         <div class="col-4">
-                            <h3>배송상태: <span th:text="${ordersResponseDTO.deliveryStatus}"></span></h3>
+                            <h5>주문상태: <span th:text="${ordersResponseDTO.orderStatus.status}"></span></h5>
+                            <button th:onclick="cancelOrders([(${ordersResponseDTO.id})])">주문취소</button>
+                        </div>
+                    </div>
+                    <div class="row">
+<!--                        배송지 정보-->
+                        <div class="col-12">
+                            <h3>배송지 정보</h3>
+                            <div class="row">
+                                <div class="col-4">
+                                    <h5>받는 사람: <span th:text="${ordersResponseDTO.address.addressee}"></span></h5>
+                                    <h5>연락처: <span th:text="${ordersResponseDTO.address.phoneNumber}"></span></h5>
+                                </div>
+                                <div class="col-4">
+                                    <h5>주소: <span th:text="${ordersResponseDTO.address.address + ' ' + ordersResponseDTO.address.detailAddress}"></span> </h5>
+                                    <h5>우편번호: <span th:text="${ordersResponseDTO.address.postcode}"></span></h5>
+                                </div>
+                                <div class="col-4">
+                                    <h5>배송상태: <span th:text="${ordersResponseDTO.deliveryStatus}"></span></h5>
+                                    <h5>배송번호: <span th:text="${ordersResponseDTO.deliverySerialNumber}"></span></h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -59,6 +80,34 @@
         </div>
     </div>
 </main>
-
+<script th:inline="javascript">
+    const cancelOrders = (orderId) => {
+        const deliveryStatus = /*[[${ordersResponseDTO.deliveryStatus}]]*/ 'PREPARE, DELIVERING, ARRIVE, CANCELED';
+        if (confirm('주문을 취소하시겠습니까?')) {
+            if (deliveryStatus === 'CANCELED') {
+                alert('이미 취소된 주문입니다.');
+                return;
+            }
+            if (deliveryStatus !== 'PREPARE') {
+                alert('배송중이거나 배송완료된 상품은 취소가 불가능합니다.');
+                return;
+            }
+            const url = '/api/orders/cancel/' + orderId;
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    alert('주문이 취소되었습니다.');
+                    location.reload();
+                } else {
+                    alert('주문 취소에 실패하였습니다.');
+                }
+            });
+        }
+    }
+</script>
 </body>
 </html>

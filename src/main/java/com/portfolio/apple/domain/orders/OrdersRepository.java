@@ -13,4 +13,7 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
     Optional<Orders> findOrdersWithDeliveryByIdAndAccount(@Param("ordersId") Long ordersId, @Param("userAccount") UserAccount userAccount);
 
     List<Orders> findOrdersWithDeliveryByUserAccount(UserAccount userAccount);
+
+    @Query("select o from Orders o join fetch o.delivery where o.id = :ordersId")
+    Optional<Orders> findWithDeliveryById(@Param("ordersId") Long ordersId);
 }
