@@ -13,7 +13,7 @@
       - MapStruct(https://mapstruct.org/)
       - QueryDSL(http://querydsl.com/)
 
-# 기능 정리
+# 주요기능 정리
 ## 1. 로그인/회원가입
 ```java
     @Bean
