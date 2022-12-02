@@ -43,11 +43,11 @@ public class InitListener implements ApplicationListener<ApplicationStartedEvent
 //        adminAccountService.saveAdminAccount(new AdminJoinFormDTO("test", "test", "test"));
 //        System.out.println("관리자 계정 초기 생성됨");
         //아이템 및 파일이미지 미리 생성
-        try {
-            initSampleItems();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            initSampleItems();
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     private void initSampleItems() throws Exception {
