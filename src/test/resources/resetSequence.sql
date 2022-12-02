@@ -1,1 +1,0 @@
-alter sequence HIBERNATE_SEQUENCE restart with 1;

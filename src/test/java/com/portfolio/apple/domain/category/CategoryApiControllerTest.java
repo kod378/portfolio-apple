@@ -37,11 +37,11 @@ class CategoryApiControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
-
+    private Category category;
     @BeforeEach
     void setUp() throws Exception {
         CategorySaveRequestDTO categorySaveRequestDTO = new CategorySaveRequestDTO("test");
-        categoryService.saveCategory(categorySaveRequestDTO);
+        category = categoryService.saveCategory(categorySaveRequestDTO);
 
         createEntity.setUpAdminAccount();
     }
@@ -51,11 +51,11 @@ class CategoryApiControllerTest {
     public void updateCategory() throws Exception {
         String categoryName = "test2";
         CategorySaveRequestDTO categorySaveRequestDTO = new CategorySaveRequestDTO(categoryName);
-        mockMvc.perform(put("/admin/api/category/1")
+        mockMvc.perform(put("/admin/api/category/" + category.getId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(categorySaveRequestDTO)))
                 .andExpect(status().isOk())
-                .andExpect(content().string("1"));
+                .andExpect(content().string(category.getId().toString()));
     }
 
     @DisplayName("카테고리 수정 - 실패")
@@ -63,29 +63,31 @@ class CategoryApiControllerTest {
     public void updateCategoryFail() throws Exception {
         String categoryName = "test2";
         CategorySaveRequestDTO categorySaveRequestDTO = new CategorySaveRequestDTO(categoryName);
+        long wrongCategoryId = category.getId() + 1;
 
-        mockMvc.perform(put("/admin/api/category/2")
+        mockMvc.perform(put("/admin/api/category/" + wrongCategoryId)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(categorySaveRequestDTO)))
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string("해당 카테고리가 없습니다. id=2"));
+                .andExpect(content().string("해당 카테고리가 없습니다. id=" + wrongCategoryId));
     }
 
     @DisplayName("카테고리 삭제 - 성공")
     @TestWithAdminAccount
     public void deleteCategory() throws Exception {
-        mockMvc.perform(delete("/admin/api/category/1"))
+        mockMvc.perform(delete("/admin/api/category/" + category.getId()))
                 .andExpect(status().isOk())
-                .andExpect(content().string("1"));
+                .andExpect(content().string(category.getId().toString()));
 
-        Assertions.assertThat(categoryRepository.findById(1L).isEmpty()).isTrue();
+        Assertions.assertThat(categoryRepository.findById(category.getId()).isEmpty()).isTrue();
     }
 
     @DisplayName("카테고리 삭제 - 실패")
     @TestWithAdminAccount
     public void deleteCategoryFail() throws Exception {
-        mockMvc.perform(delete("/admin/api/category/2"))
+        long wrongCategoryId = category.getId() + 1;
+        mockMvc.perform(delete("/admin/api/category/" + wrongCategoryId))
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string("해당 카테고리가 없습니다. id=2"));
+                .andExpect(content().string("해당 카테고리가 없습니다. id=" + wrongCategoryId));
     }
 }

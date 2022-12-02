@@ -14,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class OrderedItem extends BaseTimeEntity {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

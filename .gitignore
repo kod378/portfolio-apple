@@ -40,6 +40,8 @@ out/
 /src/main/resources/templates/project1/
 /src/main/resources/templates/study/
 
+#기타 설정
+application.yml
 application-oauth.yml
 /src/main/generated/
 spy.log

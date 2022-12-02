@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Builder @NoArgsConstructor @AllArgsConstructor
 public class AdminAccount extends BaseTimeEntity {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false)

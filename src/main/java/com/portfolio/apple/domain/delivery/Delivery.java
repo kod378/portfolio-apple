@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Delivery extends BaseTimeEntity {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String serialNumber;
