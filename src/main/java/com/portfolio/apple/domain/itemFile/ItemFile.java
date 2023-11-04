@@ -16,7 +16,7 @@ import javax.validation.constraints.Min;
 @AllArgsConstructor
 public class ItemFile {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String fileName;

@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Item extends BaseTimeEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private int stockQuantity;
