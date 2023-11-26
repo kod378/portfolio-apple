@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -28,7 +29,7 @@ public class ItemFileService {
     private String uploadImagePath;
     Long maxOrderNumber = 0L;
 
-    public List<ItemFile> uploadAndSaveFiles(MultipartFile representationFile, MultipartFile[] files) throws Exception {
+    public List<ItemFile> uploadAndSaveFiles(MultipartFile representationFile, MultipartFile[] files) {
         List<String> uploadedFileNames = uploadFiles(representationFile, files);
         return makeItemFiles(representationFile, files, uploadedFileNames);
     }
@@ -48,7 +49,7 @@ public class ItemFileService {
     }
 
     private void validateFileType(MultipartFile file) {
-        if(!file.getContentType().startsWith("image/")){
+        if(!Objects.requireNonNull(file.getContentType()).startsWith("image/")){
             throw new UploadFileNotValidException("이미지 파일만 업로드 가능합니다.");
         }
     }
@@ -56,7 +57,7 @@ public class ItemFileService {
     private String uploadFile(MultipartFile file) {
         validateFileType(file);
         String uuid = UUID.randomUUID().toString();
-        String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+        String extension = Objects.requireNonNull(file.getOriginalFilename()).substring(file.getOriginalFilename().lastIndexOf("."));
         String fileName = uuid + extension;
         String thumbnailName = "s_" + uuid + extension;
         Path filePath = Path.of(uploadImagePath, fileName);

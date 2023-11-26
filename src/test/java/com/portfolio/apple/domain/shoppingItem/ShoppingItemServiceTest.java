@@ -21,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -67,7 +66,7 @@ class ShoppingItemServiceTest {
 
     @DisplayName("장바구니 상품 담기 - 정상 입력값")
     @Test
-    public void addShoppingItem() throws Exception {
+    public void addShoppingItem() {
         //given
         UserAccount user = userAccountRepository.findByEmail("test@test.com").get();
         Item item = itemService.findItemByName("itemName");
@@ -86,7 +85,7 @@ class ShoppingItemServiceTest {
 
     @DisplayName("장바구니 상품 수량 변경 - 정상 입력값")
     @Test
-    public void changeQuantity() throws Exception {
+    public void changeQuantity() {
         //given
         UserAccount user = userAccountRepository.findByEmail("test@test.com").get();
         Item item = itemService.findItemByName("itemName");
@@ -105,7 +104,7 @@ class ShoppingItemServiceTest {
 
     @DisplayName("장바구니 상품 수량 변경 - 예외 최소 1보다 커야함")
     @Test
-    void changeQuantityException1() throws Exception {
+    void changeQuantityException1() {
         //given
         UserAccount user = userAccountRepository.findByEmail("test@test.com").get();
         Item item = itemService.findItemByName("itemName");
@@ -123,7 +122,7 @@ class ShoppingItemServiceTest {
     //TODO: 장바구니 상품 수량 변경 - 예외 입력값
     @DisplayName("장바구니 상품 수량 변경 - 예외 재고 초과")
     @Test
-    void changeQuantityException2() throws Exception {
+    void changeQuantityException2() {
         //given
         UserAccount user = userAccountRepository.findByEmail("test@test.com").get();
         Item item = itemService.findItemByName("itemName");
@@ -140,7 +139,7 @@ class ShoppingItemServiceTest {
 
     @DisplayName("장바구니 상품 개별 삭제 - 정상 입력값")
     @Test
-    void deleteShoppingItem() throws Exception {
+    void deleteShoppingItem() {
         //given
         UserAccount user = userAccountRepository.findByEmail("test@test.com").get();
         Item item = itemService.findItemByName("itemName");

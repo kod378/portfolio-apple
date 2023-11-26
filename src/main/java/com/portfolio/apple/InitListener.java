@@ -53,7 +53,7 @@ public class InitListener implements ApplicationListener<ApplicationStartedEvent
 
     private void initSampleItems() throws Exception {
         categoryService.saveCategory(new CategorySaveRequestDTO("testCategory1"));
-        List<ItemFile> itemFileList = Collections.emptyList();
+        List<ItemFile> itemFileList;
         Path path1 = Paths.get(Objects.requireNonNull(getClass().getResource("/static/images/사과1.jpg")).toURI());
         Path path2 = Paths.get(Objects.requireNonNull(getClass().getResource("/static/images/사과2.jpg")).toURI());
         Path path3 = Paths.get(Objects.requireNonNull(getClass().getResource("/static/images/사과3.jpg")).toURI());

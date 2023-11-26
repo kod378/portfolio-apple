@@ -24,7 +24,7 @@ class DeliveryServiceTest {
 
     @DisplayName("배송지 생성 - 정상 입력값")
     @Test
-    public void createDelivery() throws Exception {
+    public void createDelivery() {
         //given
         OrdersRequestDTO ordersRequestDTO = new OrdersRequestDTO("testName", "010-0000-0000", "testAddress", "testDetailAddress", 12345, null);
         //when

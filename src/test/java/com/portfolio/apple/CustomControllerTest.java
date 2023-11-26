@@ -1,6 +1,5 @@
 package com.portfolio.apple;
 
-import com.portfolio.apple.ResetTestExecutionListener;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestExecutionListeners;

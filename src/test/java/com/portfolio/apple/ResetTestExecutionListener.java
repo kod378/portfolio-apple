@@ -4,6 +4,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.support.AbstractTestExecutionListener;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 //출처: https://mangkyu.tistory.com/264 [MangKyu's Diary:티스토리]
 public class ResetTestExecutionListener extends AbstractTestExecutionListener {
@@ -34,7 +35,7 @@ public class ResetTestExecutionListener extends AbstractTestExecutionListener {
     private void truncateTables(final JdbcTemplate jdbcTemplate, final List<String> truncateQueries) {
         jdbcTemplate.execute("SET REFERENTIAL_INTEGRITY FALSE");  //h2 db
 //        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 0"); //mysql
-        truncateQueries.forEach(query -> jdbcTemplate.execute(query));
+        truncateQueries.forEach(jdbcTemplate::execute);
         jdbcTemplate.execute("SET REFERENTIAL_INTEGRITY TRUE");   //h2 db
 //        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 1"); //mysql
     }
