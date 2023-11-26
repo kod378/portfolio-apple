@@ -1,9 +1,8 @@
 package com.portfolio.apple.domain.delivery;
 
-import com.portfolio.apple.ResetTextExecutionListener;
+import com.portfolio.apple.ResetTestExecutionListener;
 import com.portfolio.apple.domain.Address;
 import com.portfolio.apple.domain.orders.OrdersRequestDTO;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-@TestExecutionListeners(value = {ResetTextExecutionListener.class}, mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
+@TestExecutionListeners(value = {ResetTestExecutionListener.class}, mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
 class DeliveryServiceTest {
 
     @Autowired

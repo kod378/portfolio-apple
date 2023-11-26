@@ -23,15 +23,12 @@ public class ShoppingItemUserController {
 
     @GetMapping("/shoppingItem")
     public String shoppingItem(Model model, @CurrentUser UserAccount userAccount) {
-        final List<ShoppingItem> listByUserAccount = shoppingItemService.findListByUserAccount(userAccount);
-        final List<ShoppingItemResponseDTO> shoppingItemDTOList = shoppingItemMapper.entityListToResponseDtoList(listByUserAccount);
-        final Map<Boolean, List<ShoppingItemResponseDTO>> sellableMap = shoppingItemDTOList.stream().collect(Collectors.partitioningBy(dto -> dto.getStockQuantity() > 0));
+        final Map<Boolean, List<ShoppingItemResponseDTO>> sellableMap = shoppingItemService.getSellableItemsByUserAccount(userAccount);
         List<ShoppingItemResponseDTO> sellableShoppingItemDTOList = sellableMap.get(true);
-        final int allTotalPrice = getSumTotalPrice(sellableShoppingItemDTOList);
 
         model.addAttribute("shoppingItemResponseDTOList", sellableShoppingItemDTOList);
         model.addAttribute("soldOutList", sellableMap.get(false));
-        model.addAttribute("allTotalPrice", allTotalPrice);
+        model.addAttribute("allTotalPrice", shoppingItemService.getSumTotalPrice(sellableShoppingItemDTOList));
         model.addAttribute("deliveryFee", DeliveryFee.DELIVERY_FEE);
         return "user/ShoppingItem/list";
     }
@@ -40,14 +37,10 @@ public class ShoppingItemUserController {
     public String shoppingItemBeforeOrder(@RequestParam(value = "checkShoppingItems", required = false) List<Long> checkedIdList, @CurrentUser UserAccount userAccount, Model model) {
         final List<ShoppingItem> listByUserAccountAndIdList = shoppingItemService.findAllByUserAccountAndIdIn(userAccount, checkedIdList);
         List<ShoppingItemResponseDTO> checkedShoppingItemDTOList = shoppingItemMapper.entityListToResponseDtoList(listByUserAccountAndIdList);
-        final int allTotalPrice = getSumTotalPrice(checkedShoppingItemDTOList);
+        final int allTotalPrice = shoppingItemService.getSumTotalPrice(checkedShoppingItemDTOList);
         model.addAttribute("shoppingItemResponseDTOList", checkedShoppingItemDTOList);
         model.addAttribute("allTotalPrice", allTotalPrice);
         model.addAttribute("deliveryFee", DeliveryFee.DELIVERY_FEE);
         return "user/ShoppingItem/order";
-    }
-
-    private static int getSumTotalPrice(List<ShoppingItemResponseDTO> shoppingItemDTOList) {
-        return shoppingItemDTOList.stream().mapToInt(ShoppingItemResponseDTO::getTotalPrice).sum();
     }
 }

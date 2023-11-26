@@ -1,6 +1,7 @@
 package com.portfolio.apple.domain.item;
 
 import com.portfolio.apple.domain.category.QCategory;
+import com.portfolio.apple.domain.itemFile.ItemFile;
 import com.portfolio.apple.domain.itemFile.QItemFile;
 import com.portfolio.apple.mapper.ItemMapper;
 import com.querydsl.jpa.impl.JPAQuery;
@@ -33,9 +34,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
                 .fetch();
 
         itemList.forEach(i -> {
-            i.getItemFiles().forEach(itemFile -> {
-                itemFile.getFileName();
-            });
+            i.getItemFiles().forEach(ItemFile::getFileName);
         });
 
         List<ItemResponseDTO> itemResponseDTOList = itemMapper.entityListToResponseDtoList(itemList);

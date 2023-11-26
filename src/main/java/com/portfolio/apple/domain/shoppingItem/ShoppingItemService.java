@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -71,5 +73,15 @@ public class ShoppingItemService {
 
     public List<ShoppingItem> findAllByUserAccountAndIdIn(UserAccount userAccount, List<Long> checkShoppingItemIds) {
         return shoppingItemRepository.findAllByUserAccountAndIdIn(userAccount, checkShoppingItemIds);
+    }
+
+    public Map<Boolean, List<ShoppingItemResponseDTO>> getSellableItemsByUserAccount(UserAccount userAccount) {
+        final List<ShoppingItem> listByUserAccount = shoppingItemRepository.findAllByUserAccount(userAccount);
+        final List<ShoppingItemResponseDTO> shoppingItemDTOList = shoppingItemMapper.entityListToResponseDtoList(listByUserAccount);
+        return shoppingItemDTOList.stream().collect(Collectors.partitioningBy(dto -> dto.getStockQuantity() > 0));
+    }
+
+    public int getSumTotalPrice(List<ShoppingItemResponseDTO> shoppingItemDTOList) {
+        return shoppingItemDTOList.stream().mapToInt(ShoppingItemResponseDTO::getTotalPrice).sum();
     }
 }

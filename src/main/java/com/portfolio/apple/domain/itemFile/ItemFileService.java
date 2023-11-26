@@ -26,8 +26,6 @@ public class ItemFileService {
     private final ItemFileRepository itemFileRepository;
     @Value("${file.upload-image-dir}")
     private String uploadImagePath;
-    @Value("${file.upload-thumbnail-dir}")
-    private String uploadThumbnailPath;
     Long maxOrderNumber = 0L;
 
     public List<ItemFile> uploadAndSaveFiles(MultipartFile representationFile, MultipartFile[] files) throws Exception {

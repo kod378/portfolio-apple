@@ -1,6 +1,7 @@
 package com.portfolio.apple;
 
 import com.portfolio.apple.domain.account.admin.AdminAccountService;
+import com.portfolio.apple.domain.account.admin.AdminJoinFormDTO;
 import com.portfolio.apple.domain.category.CategorySaveRequestDTO;
 import com.portfolio.apple.domain.category.CategoryService;
 import com.portfolio.apple.domain.item.ItemSaveRequestDTO;
@@ -40,14 +41,14 @@ public class InitListener implements ApplicationListener<ApplicationStartedEvent
 
     @Override
     public void onApplicationEvent(ApplicationStartedEvent event) {
-//        adminAccountService.saveAdminAccount(new AdminJoinFormDTO("test", "test", "test"));
-//        System.out.println("관리자 계정 초기 생성됨");
-        //아이템 및 파일이미지 미리 생성
-//        try {
-//            initSampleItems();
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
+        adminAccountService.saveAdminAccount(new AdminJoinFormDTO("test", "test", "test"));
+        System.out.println("관리자 계정 초기 생성됨");
+//        아이템 및 파일이미지 미리 생성
+        try {
+            initSampleItems();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void initSampleItems() throws Exception {

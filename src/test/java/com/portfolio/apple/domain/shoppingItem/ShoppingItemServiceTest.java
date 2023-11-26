@@ -1,9 +1,8 @@
 package com.portfolio.apple.domain.shoppingItem;
 
-import com.portfolio.apple.ResetTextExecutionListener;
+import com.portfolio.apple.ResetTestExecutionListener;
 import com.portfolio.apple.domain.account.Role;
 import com.portfolio.apple.domain.account.user.UserAccount;
-import com.portfolio.apple.domain.category.Category;
 import com.portfolio.apple.domain.category.CategorySaveRequestDTO;
 import com.portfolio.apple.domain.category.CategoryService;
 import com.portfolio.apple.domain.item.Item;
@@ -22,12 +21,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-@TestExecutionListeners(value = {ResetTextExecutionListener.class}, mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
+@TestExecutionListeners(value = {ResetTestExecutionListener.class}, mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
 class ShoppingItemServiceTest {
 
     @Autowired
@@ -56,7 +56,10 @@ class ShoppingItemServiceTest {
         List<ItemFile> itemFiles = new ArrayList<>(
                 List.of(ItemFile.builder()
                         .fileName("test").fileFullPath("test").fileType("test").orderNumber(1L).originalFileName("test").size(1L)
-                        .build())
+                        .build()
+                        ,ItemFile.builder()
+                                .fileName("test0").fileFullPath("test0").fileType("test0").orderNumber(0L).originalFileName("test").size(1L)
+                                .build())
         );
         itemService.saveItem(itemFormDTO, itemFiles);
     }

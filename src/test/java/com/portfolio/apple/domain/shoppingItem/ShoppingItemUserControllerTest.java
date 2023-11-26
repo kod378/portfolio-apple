@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -43,6 +44,7 @@ class ShoppingItemUserControllerTest {
         UserAccount userAccount = userAccountRepository.findByEmail("test@test.com").get();
         ShoppingItem sampleShoppingItem = ShoppingItem.createShoppingItem(userAccount, sampleItem, 1);
         shoppingItemRepository.save(sampleShoppingItem);
+
         // when
         final List<ShoppingItemResponseDTO> shoppingItemResponseDTOList = shoppingItemMapper.entityListToResponseDtoList(shoppingItemRepository.findAllByUserAccount(userAccount));
         final int allTotalPrice = shoppingItemResponseDTOList.stream().mapToInt(ShoppingItemResponseDTO::getTotalPrice).sum();
@@ -55,7 +57,29 @@ class ShoppingItemUserControllerTest {
                 .andExpect(model().attributeExists("deliveryFee"))
                 .andExpect(model().attribute("shoppingItemResponseDTOList", shoppingItemResponseDTOList))
                 .andExpect(model().attribute("allTotalPrice", allTotalPrice));
+    }
 
+    @DisplayName("장바구니 목록 화면 조회 - 품절")
+    @TestWithUserAccount
+    @Transactional
+    public void getShoppingItemList_soldOut() throws Exception {
+        // given
+        UserAccount userAccount = userAccountRepository.findByEmail("test@test.com").get();
+        ShoppingItem sampleShoppingItem = ShoppingItem.createShoppingItem(userAccount, sampleItem, 1);
+        shoppingItemRepository.save(sampleShoppingItem);
+        // when
+        sampleItem.removeStock(10);
+        final List<ShoppingItemResponseDTO> shoppingItemResponseDTOList = shoppingItemMapper.entityListToResponseDtoList(shoppingItemRepository.findAllByUserAccount(userAccount));
+
+        // then
+        mockMvc.perform(get("/shoppingItem"))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("shoppingItemResponseDTOList"))
+                .andExpect(model().attributeExists("allTotalPrice"))
+                .andExpect(model().attributeExists("deliveryFee"))
+                .andExpect(model().attributeExists("soldOutList"))
+                .andExpect(model().attribute("soldOutList", shoppingItemResponseDTOList))
+                .andExpect(model().attribute("allTotalPrice", 0));
     }
 
     @DisplayName("장바구니 주문 화면 조회 - 정상")
