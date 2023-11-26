@@ -4,7 +4,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.support.AbstractTestExecutionListener;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 //출처: https://mangkyu.tistory.com/264 [MangKyu's Diary:티스토리]
 public class ResetTestExecutionListener extends AbstractTestExecutionListener {
