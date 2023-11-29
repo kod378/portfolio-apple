@@ -13,7 +13,7 @@ public class ResetTestExecutionListener extends AbstractTestExecutionListener {
         final JdbcTemplate jdbcTemplate = getJdbcTemplate(testContext);
         final List<String> truncateQueries = getTruncateQueries(jdbcTemplate);
         truncateTables(jdbcTemplate, truncateQueries);
-        resetSequence(jdbcTemplate);
+//        resetSequence(jdbcTemplate);
     }
 
     private void resetSequence(final JdbcTemplate jdbcTemplate) {
@@ -32,10 +32,10 @@ public class ResetTestExecutionListener extends AbstractTestExecutionListener {
     }
 
     private void truncateTables(final JdbcTemplate jdbcTemplate, final List<String> truncateQueries) {
-        jdbcTemplate.execute("SET REFERENTIAL_INTEGRITY FALSE");  //h2 db
-//        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 0"); //mysql
+//        jdbcTemplate.execute("SET REFERENTIAL_INTEGRITY FALSE");  //h2 db
+        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 0"); //mysql
         truncateQueries.forEach(jdbcTemplate::execute);
-        jdbcTemplate.execute("SET REFERENTIAL_INTEGRITY TRUE");   //h2 db
-//        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 1"); //mysql
+//        jdbcTemplate.execute("SET REFERENTIAL_INTEGRITY TRUE");   //h2 db
+        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 1"); //mysql
     }
 }

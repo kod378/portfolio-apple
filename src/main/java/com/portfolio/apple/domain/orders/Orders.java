@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class Orders extends BaseTimeEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull

@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Category extends BaseTimeEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
