@@ -40,14 +40,14 @@ public class InitListener implements ApplicationListener<ApplicationStartedEvent
 
     @Override
     public void onApplicationEvent(ApplicationStartedEvent event) {
-        adminAccountService.saveAdminAccount(new AdminJoinFormDTO("test", "test", "test"));
-        System.out.println("관리자 계정 초기 생성됨");
-//        아이템 및 파일이미지 미리 생성
-        try {
+//        adminAccountService.saveAdminAccount(new AdminJoinFormDTO("test", "test", "test"));
+//        System.out.println("관리자 계정 초기 생성됨");
+////        아이템 및 파일이미지 미리 생성
+//        try {
 //            initSampleItems();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     private void initSampleItems() throws Exception {

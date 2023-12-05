@@ -19,12 +19,10 @@ public class OrdersApiController {
 
     @PutMapping("/admin/api/orders/{ordersId}/deliverySerialNumber")
     public ResponseEntity<String> updateDeliverySerialNumber(@PathVariable Long ordersId, @RequestBody DeliveryUpdateDTO deliveryUpdateDTO) {
-        Orders orders = ordersService.findWithDeliveryById(ordersId);
-        if (orders.getOrderStatus() == OrderStatus.CANCELED) {
-            return ResponseEntity.badRequest().body("이미 취소된 주문입니다.");
+        if (ordersService.changeDeliverySerialNumber(ordersId, deliveryUpdateDTO.getDeliverySerialNumber())) {
+            return ResponseEntity.ok().build();
         }
-        ordersService.updateOrdersDeliverySerialNumberAndStatus(orders, deliveryUpdateDTO.getDeliverySerialNumber());
-        return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
     }
 
     @PutMapping("/admin/api/orders/cancel/{ordersId}")
@@ -40,8 +38,18 @@ public class OrdersApiController {
     @PutMapping("/api/orders/cancel/{ordersId}")
     public ResponseEntity<String> cancelOrdersUser(@PathVariable Long ordersId) {
         Orders orders = ordersService.findWithDeliveryById(ordersId);
-        if (orders.getDelivery().getDeliveryStatus() == DeliveryStatus.PREPARE) {
-            ordersService.cancelOrders(orders);
+        if (ordersService.cancelOrders(orders)) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @PutMapping("/api/orders/complete/{ordersId}")
+    public ResponseEntity<String> completeOrders(@PathVariable Long ordersId) {
+        Orders orders = ordersService.findWithDeliveryById(ordersId);
+        if (orders.getDelivery().getDeliveryStatus() == DeliveryStatus.ARRIVE ||
+                orders.getDelivery().getDeliveryStatus() == DeliveryStatus.DELIVERING) {
+            ordersService.completeOrders(orders);
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.badRequest().build();

@@ -32,7 +32,7 @@ public class UserAccount extends BaseTimeEntity {
     private Role role;
 
     @Builder.Default
-    @OneToMany(mappedBy = "userAccount")
+    @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL)
     private List<ShoppingItem> shoppingItems = new ArrayList<>();
 
     public UserAccount update(String name) {

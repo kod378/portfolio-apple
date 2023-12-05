@@ -62,9 +62,32 @@ public class OrdersService {
     }
 
     @Transactional
-    public void cancelOrders(Orders orders) {
+    public boolean cancelOrders(Orders orders) {
+        if (orders.getDelivery().getDeliveryStatus() == DeliveryStatus.PREPARE) {
+            Delivery delivery = orders.getDelivery();
+            orders.updateOrderStatus(OrderStatus.CANCELED);
+            delivery.updateDeliveryStatus(DeliveryStatus.CANCELED);
+            return true;
+        }
+        return false;
+    }
+
+    @Transactional
+    public void completeOrders(Orders orders) {
         Delivery delivery = orders.getDelivery();
-        orders.updateOrderStatus(OrderStatus.CANCELED);
-        delivery.updateDeliveryStatus(DeliveryStatus.CANCELED);
+    }
+
+    public boolean changeDeliverySerialNumber(Long ordersId, String deliverySerialNumber) {
+        boolean result = false;
+        try {
+            Orders orders = this.findWithDeliveryById(ordersId);
+            if (orders.getOrderStatus() != OrderStatus.CANCELED) {
+                this.updateOrdersDeliverySerialNumberAndStatus(orders, deliverySerialNumber);
+                result = true;
+            }
+        } catch (EntityByIdNotFoundException e) {
+//            예외 처리
+        }
+        return result;
     }
 }
